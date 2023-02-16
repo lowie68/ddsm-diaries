@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="600.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stevie.ddsm.diaries.controllers.MainFormController">
+   <children>
+      <VBox prefHeight="545.0" prefWidth="606.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="55.0" prefWidth="606.0">
+               <children>
+                  <Label text="Diocesan Digest Sound Magazine">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="16.0" prefWidth="596.0">
+               <children>
+                  <Label text="Diary Tool">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="606.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <children>
+                  <Label fx:id="internetConnectionLabel" style="-fx-text-fill: green;" text="Internet Connection Available" />
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="355.0" prefWidth="606.0">
+               <children>
+                  <GridPane hgap="10.0" layoutX="20.0" layoutY="20.0" prefHeight="233.0" prefWidth="586.0" vgap="10.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="187.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="369.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="463.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="454.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="454.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="487.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Diary Year">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="diaryYearChoiceBox" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1" />
+                        <Label text="Magazine Edition" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="magazineEditionTextField" prefHeight="25.0" prefWidth="302.0" promptText="Edition Start Point" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Decani Compiler" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Decani Assistant Compiler" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="January Edition" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="januaryEditionDatePicker" prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="decaniCompilerTextField" promptText="Decani Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="decaniAssistantCompilerTextField" promptText="Decani Assistant Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Cantoris Compiler" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cantorisCompilerTextField" promptText="Cantoris Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Cantoris Assistant Compiler" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cantorisAssistantCompilerTextField" promptText="Cantoris Assistant Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
+                  </GridPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </AnchorPane>
+            <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="606.0" spacing="10.0">
+               <children>
+                  <Button fx:id="generateRecordingDiaryButton" mnemonicParsing="false" onAction="#handleGenerateRecordingDiaryButtonAction" prefHeight="63.0" prefWidth="113.0" text="Recording Diary" wrapText="true" />
+                  <Button fx:id="generateDuplicationDiaryButton" layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleGenerateDuplicationDiaryButtonAction" prefHeight="57.0" prefWidth="115.0" text="Duplication Diary" wrapText="true" />
+                  <Button fx:id="bankHolidaysButton" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleBankHolidaysButtonAction" prefHeight="63.0" prefWidth="109.0" text="Bank Holidays" wrapText="true" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,79 @@
+.root {
+	-fx-background-color: black;
+}
+
+.label {
+	-fx-text-fill: orange;
+	
+}
+
+.button {
+	-fx-background-color: black;
+	-fx-border-width: 1;
+	-fx-border-color: orange;
+	-fx-text-fill: orange;
+}
+
+.button:hover {
+	-fx-background-color: derive(black, 95%);
+}
+
+
+.choice-box {
+	-fx-background-color: black;
+	-fx-border-color: orange;
+}
+
+.choice-box .context-menu { 
+	-fx-background-color: black;
+}
+
+.choice-box .menu-item > .label { 
+	-fx-text-fill: white;
+}
+
+.choice-box > .label {
+	-fx-text-fill: white;
+}
+
+.text-field {
+	-fx-background-color: black;
+	-fx-border-width: 1;
+	-fx-border-color: orange;
+	-fx-text-fill: white;
+}
+
+.table-view {
+	-fx-background-color: lightgrey;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: grey;
+    -fx-text-fill: orange;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+    -fx-padding: 5 0 5 10px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: darkgrey;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even {
+    -fx-background-color: lightgrey;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
