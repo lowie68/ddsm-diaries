@@ -1,0 +1,202 @@
+2023-03-09 16:59:11 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 16:59:12 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 6284 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 16:59:12 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 16:59:13 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.45 seconds (JVM running for 2.668)
+2023-03-09 16:59:13 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 16:59:13 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 16:59:13 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 16:59:13 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 16:59:20 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 16:59:20 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 16:59:21 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 16:59:21 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:00:04 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:00:09 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:00:09 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:00:12 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:00:17 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:35:00 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:35:00 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 9772 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:35:00 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:35:01 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.489 seconds (JVM running for 2.482)
+2023-03-09 17:35:02 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:35:02 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:35:02 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:35:02 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:35:10 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:35:11 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:35:11 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:35:11 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:35:22 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:35:24 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:36:51 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:36:52 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 32424 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:36:52 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:36:53 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.487 seconds (JVM running for 2.479)
+2023-03-09 17:36:53 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:36:53 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:36:53 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:36:53 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:37:00 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:37:01 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:37:01 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:37:01 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:37:34 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:37:35 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:37:35 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:37:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:37:59 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:37:59 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:38:10 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:38:11 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:38:51 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:38:52 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 11400 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:38:52 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:38:53 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.429 seconds (JVM running for 2.414)
+2023-03-09 17:38:53 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:38:53 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:38:53 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:38:53 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:39:00 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:39:01 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:39:01 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:39:01 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:39:19 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:39:20 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:39:20 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:39:41 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:39:43 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:39:43 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:39:46 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:39:47 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:39:47 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:40:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:40:05 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:40:05 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:40:11 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:40:13 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:40:54 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:40:55 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 24940 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:40:55 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:40:56 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.557 seconds (JVM running for 2.586)
+2023-03-09 17:40:56 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:40:56 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:40:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:40:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:41:08 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:41:09 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:41:09 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:41:09 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:41:28 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:41:29 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:41:29 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:41:43 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:41:45 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:42:24 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:42:25 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 18056 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:42:25 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:42:26 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.454 seconds (JVM running for 2.422)
+2023-03-09 17:42:26 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:42:26 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:42:26 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:42:26 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:42:47 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:42:48 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:42:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:42:48 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:43:12 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:43:15 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:50:01 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:50:02 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 31252 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:50:02 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:50:03 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.698 seconds (JVM running for 3.175)
+2023-03-09 17:50:03 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:50:03 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:50:04 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:50:04 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:50:09 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:50:10 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:50:10 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:50:10 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:50:24 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:50:26 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:50:26 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:50:37 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:50:41 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 17:55:58 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 17:55:58 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 24776 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 17:55:58 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 17:55:59 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.482 seconds (JVM running for 2.489)
+2023-03-09 17:55:59 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 17:55:59 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 17:56:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 17:56:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 17:56:11 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 17:56:12 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 17:56:12 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:56:12 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:56:20 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:56:22 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 17:56:22 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 17:56:36 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 17:56:38 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 17:56:38 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 17:56:42 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 17:56:43 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 18:04:09 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.stevie.ddsm.diaries.DdsmDiariesApplicationTests], using SpringBootContextLoader
+2023-03-09 18:04:09 [main] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [org.stevie.ddsm.diaries.DdsmDiariesApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-03-09 18:04:09 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [org.stevie.ddsm.diaries.DdsmDiariesApplicationTests]: DdsmDiariesApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-03-09 18:04:10 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration org.stevie.ddsm.diaries.DdsmDiariesApplication for test class org.stevie.ddsm.diaries.DdsmDiariesApplicationTests
+2023-03-09 18:04:10 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-03-09 18:04:10 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@35e5d0e5, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@73173f63, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@55562aa9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@655ef322, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7e276594, org.springframework.test.context.event.EventPublishingTestExecutionListener@3401a114, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5066d65f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4233e892, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@77d2e85, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3ecd267f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@58ffcbd7, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@555cf22]
+2023-03-09 18:04:10 [main] INFO  o.s.d.d.DdsmDiariesApplicationTests - Starting DdsmDiariesApplicationTests using Java 19 on DESKTOP-ATTKBVC with PID 18356 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 18:04:10 [main] INFO  o.s.d.d.DdsmDiariesApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 18:04:11 [main] INFO  o.s.d.d.DdsmDiariesApplicationTests - Started DdsmDiariesApplicationTests in 1.433 seconds (JVM running for 3.786)
+2023-03-09 18:25:27 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 18:25:28 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 8576 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 18:25:28 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 18:25:29 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.609 seconds (JVM running for 2.852)
+2023-03-09 18:25:29 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 18:25:29 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 18:25:30 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 18:25:30 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 18:25:35 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 18:25:36 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 18:25:37 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 18:25:37 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 18:25:53 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 18:25:55 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 18:25:55 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 18:26:08 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 18:26:12 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 18:37:46 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 18:37:47 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 10548 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 18:37:47 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 18:37:48 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.526 seconds (JVM running for 2.54)
+2023-03-09 18:37:48 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 18:37:48 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 18:37:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 18:37:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 18:38:04 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2024
+2023-03-09 18:38:05 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 18:38:06 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 18:38:06 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 18:38:27 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 18:38:28 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-09 21:05:54 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-09 21:05:55 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 24656 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-09 21:05:55 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-09 21:05:56 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.554 seconds (JVM running for 2.602)
+2023-03-09 21:05:56 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-09 21:05:56 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-09 21:05:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-09 21:05:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-09 21:06:12 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-09 21:06:13 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-09 21:06:13 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-09 21:06:13 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-09 21:06:29 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-09 21:06:31 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading duplication dialog from fxml
+2023-03-09 21:06:31 [JavaFX Application Thread] INFO  o.s.d.d.c.DuplicationDiaryController - Initialising duplication dates form in form controller
+2023-03-09 21:06:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close duplication dates dialog
+2023-03-09 21:06:49 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped

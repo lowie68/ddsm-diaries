@@ -7,7 +7,8 @@
 package org.stevie.ddsm.diaries.domain;
 
 import java.time.LocalDate;
+import java.time.Month;
 
-public record RecordingDiaryEntry(LocalDate recordingDate, int edition, Team team, String compiler, String assistantCompiler) {
+public record RecordingDiaryEntry(Month month, LocalDate recordingDate, int edition, Team team, String compiler, String assistantCompiler) {
 
 }

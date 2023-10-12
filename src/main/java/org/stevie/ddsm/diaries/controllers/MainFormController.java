@@ -18,16 +18,14 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.stevie.ddsm.diaries.domain.DuplicationDiary;
 import org.stevie.ddsm.diaries.domain.RecordingDiary;
-import org.stevie.ddsm.diaries.ui.FormBean;
-import org.stevie.ddsm.diaries.ui.MainFormBackingBean;
+import org.stevie.ddsm.diaries.service.internet.InternetStatusService;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,22 +43,17 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.util.StringConverter;
+import javafx.util.Duration;
 
 @Component
-public class MainFormController  implements Initializable, FormBean {
+public class MainFormController  implements Initializable {
 	
-	private static final String DIARY_ERROR_TITLE = "Diary Error";
-	private static final String DATE_ERROR_HEADER = "Selected date error";
-	private static final String YEAR_ERROR_HEADER = "Year out of bounds";
-	private static final String EDITION_ERROR_HEADER = "Edition input error";
-	
-	/**
-	 * Spring bean which is bound to the UI at run-time
-	 */
-	@Autowired
-	private MainFormBackingBean backingBean;
-	
+	public static final String DIARY_ERROR_TITLE = "Input Error";
+	public static final String FATAL_ERROR = "Fatal Error";
+	public static final String INPUT_ERROR_HEADER = "Validation Error";
+
+	private static Logger logger = LoggerFactory.getLogger(MainFormController.class);
+
 	/**
 	 * JavaFX controls
 	 */
@@ -93,7 +86,30 @@ public class MainFormController  implements Initializable, FormBean {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		configureYearChoiceBox();
+		configureJanuaryDatePicker();
+		configureMagazineEditionTextField();
+		configureInternetStatusChecker();
+	}
+
+	private void configureMagazineEditionTextField() {
+		magazineEditionTextField.setText("400");
+		magazineEditionTextField.setTooltip(new Tooltip("The edition carried forward from December in the previous year"));
 		
+	}
+
+	private void configureJanuaryDatePicker() {
+
+		/*
+		 * Initialise the date picker when the form is first displayed 
+		 */
+		januaryEditionDatePicker.setValue(LocalDate.of(diaryYearChoiceBox.getValue(), 1, 1));
+		januaryEditionDatePicker.setTooltip(new Tooltip("Input the date of the first recording carried over from the previous year"));
+		
+	}
+
+	private void configureYearChoiceBox() {
+
 		/*
 		 * Allow user to select a year 5 years in the past or 5 years in the future
 		 */
@@ -108,45 +124,60 @@ public class MainFormController  implements Initializable, FormBean {
 			LocalDate start = LocalDate.of(newValue, 1, 1);
 			januaryEditionDatePicker.setValue(start);
 		});
-		
-		/*
-		 * Initialise the date picker when the form is first displayed 
-		 */
-		januaryEditionDatePicker.setValue(LocalDate.of(diaryYearChoiceBox.getValue(), 1, 1));
-		
-		/*
-		 * Set tooltips on the controls
-		 */
+
 		diaryYearChoiceBox.setTooltip(new Tooltip("Please select a year from choice box"));
-		januaryEditionDatePicker.setTooltip(new Tooltip("Input the date of the first recording carried over from the previous year"));
-		magazineEditionTextField.setTooltip(new Tooltip("The edition carried forward from December in the previous year"));
+	}
 
+	private void configureInternetStatusChecker() {
+		logger.info("Configuring internet status checker");
 		/*
-		 * Bind the UI to the backing bean
+		 * check internet background task
 		 */
-		backingBean.diaryYearPropertty().bind(diaryYearChoiceBox.valueProperty());
-
-		IntegerProperty ip = backingBean.magazineEditionProperty();
-		StringProperty sp = magazineEditionTextField.textProperty();
-		Bindings.bindBidirectional(sp, ip, new StringConverter<Number>() {
-
-			@Override
-			public String toString(Number object) {
-				return object.toString();
-			}
-
-			@Override
-			public Number fromString(String string) {
-				return Integer.parseInt(string);
-			}
-		});
+		var service = new InternetStatusService();
+		service.setPeriod(Duration.seconds(30));
 		
-		backingBean.januaryEditionProperty().bind(januaryEditionDatePicker.valueProperty());
-		backingBean.decaniCompilerProperty().bind(decaniCompilerTextField.textProperty());
-		backingBean.decaniAssistantCompilerProperty().bind(decaniAssistantCompilerTextField.textProperty());
-		backingBean.cantorisCompilerProperty().bind(cantorisCompilerTextField.textProperty());
-		backingBean.cantorisAssistantCompilerProperty().bind(cantorisAssistantCompilerTextField.textProperty());
+		service.setOnRunning(
+			e -> {
+				internetConnectionLabel.setText(InternetStatusService.IN_PROGRESS);
+				internetConnectionLabel.setStyle("-fx-text-fill: orange;");
+			});
 
+		service.setOnSucceeded(
+			e -> {
+				switch (service.getValue()) {
+					case INTERNET_DOWN -> {
+						internetConnectionLabel.setText(InternetStatusService.INTERNET_NOT_AVAILABLE);
+						internetConnectionLabel.setStyle("-fx-text-fill: red;");
+					}
+					case INTERNET_UP -> {
+						internetConnectionLabel.setText(InternetStatusService.INTERNET_AVAILABLE);
+						internetConnectionLabel.setStyle("-fx-text-fill: green;");
+					}
+					default -> {
+						logger.error("Unrecognised enum {}", service.getValue());
+						var alert = new Alert(AlertType.ERROR);
+						alert.setTitle(FATAL_ERROR);
+						alert.setHeaderText("Illegal Program State");
+						alert.setContentText("An unrecognised enum was passed to switch statement. See log file for details.");
+						alert.showAndWait();
+						Platform.exit();
+					}
+				}
+			});
+
+		service.setOnFailed(
+			e -> {
+				internetConnectionLabel.setText(InternetStatusService.INTERNET_STATUS_CHECK_FAILED);
+				internetConnectionLabel.setStyle("-fx-text-fill: red;");
+				logger.error("Internet status background thread failed with exception {}", service.getException().getMessage());
+				var alert = new Alert(AlertType.ERROR);
+				alert.setTitle(FATAL_ERROR);
+				alert.setHeaderText("Illegal Program State");
+				alert.setContentText("The internet status check background thread failed. See log file for details.");
+				alert.showAndWait();
+			});
+
+		service.start();
 	}
 
 	/**
@@ -181,27 +212,31 @@ public class MainFormController  implements Initializable, FormBean {
 		if (!validateForm()) return;
 
 		/*
-		 * create recording diary (builder pattern)
+		 * create recording diary using builder pattern
 		 */
 		var recordingDiary = new RecordingDiary.RecordingDiaryBuilder()
-				.diaryYear(backingBean.getDiaryYear())
-				.edition(backingBean.getMagazineEdition())
-				.januaryEdition(backingBean.getJanuaryEdition())
-				.decaniCompiler(backingBean.getDecaniCompiler())
-				.decaniAssistant(backingBean.getDecaniAssistantCompiler())
-				.cantorisCompiler(backingBean.getCantorisCompiler())
-				.cantorisAssistant(backingBean.getCantorisAssistantCompiler())
+				.diaryYear(diaryYearChoiceBox.getValue())
+				.edition(Integer.valueOf(magazineEditionTextField.getText()))
+				.januaryEdition(januaryEditionDatePicker.getValue())
+				.decaniCompiler(decaniCompilerTextField.getText())
+				.decaniAssistant(decaniAssistantCompilerTextField.getText())
+				.cantorisCompiler(cantorisCompilerTextField.getText())
+				.cantorisAssistant(cantorisAssistantCompilerTextField.getText())
 				.build();
-		
-		/*
-		 * generate diary entries
-		 */
-		recordingDiary.generateDiary();
 		
 		/*
 		 * display dialog
 		 */
+		displayRecordingDiaryDialog(recordingDiary);
+		
+	}
+
+	private void displayRecordingDiaryDialog(RecordingDiary recordingDiary) {
+		/*
+		 * display dialog
+		 */
 		try {
+			logger.info("Loading recording dialog from fxml");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recording.fxml"));
 			DialogPane pane = loader.load();
 			RecordingDiaryController controller = loader.getController();
@@ -214,18 +249,16 @@ public class MainFormController  implements Initializable, FormBean {
 			dialog.setDialogPane(pane);
 			dialog.showAndWait()
 				.filter(response -> response == ButtonType.CLOSE)
-				.ifPresent(System.out::println);
+				.ifPresent(bt -> logger.info("Close recording dates dialog"));
 		} catch (IOException e) {
+			logger.error("I/O exception occurred while loading recording dialog - {}", e.getMessage());
 			var alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Fatal Error");
+			alert.setTitle(FATAL_ERROR);
 			alert.setHeaderText("Error Loading Form");
-			alert.setContentText("An exception occurred during the form loading process. " + e.getMessage());
+			alert.setContentText("An exception occurred during the form loading process. See log file for details!");
 			alert.showAndWait();
+			Platform.exit();	
 		}
-		/*
-		 * print to console
-		 */
-//		recordingDiary.printDiaryToConsole();
 	}
 
 	/**
@@ -244,45 +277,94 @@ public class MainFormController  implements Initializable, FormBean {
 		if (!validateForm()) return;
 		
 		/*
-		 * create recording diary dependency (builder pattern)
+		 * create recording diary dependency using builder pattern
 		 */
 		var recordingDiary = new RecordingDiary.RecordingDiaryBuilder()
-				.diaryYear(backingBean.getDiaryYear())
-				.edition(backingBean.getMagazineEdition())
-				.januaryEdition(backingBean.getJanuaryEdition())
-				.decaniCompiler(backingBean.getDecaniCompiler())
-				.decaniAssistant(backingBean.getDecaniAssistantCompiler())
-				.cantorisCompiler(backingBean.getCantorisCompiler())
-				.cantorisAssistant(backingBean.getCantorisAssistantCompiler())
+				.diaryYear(diaryYearChoiceBox.getValue())
+				.edition(Integer.valueOf(magazineEditionTextField.getText()))
+				.januaryEdition(januaryEditionDatePicker.getValue())
+				.decaniCompiler(decaniCompilerTextField.getText())
+				.decaniAssistant(decaniAssistantCompilerTextField.getText())
+				.cantorisCompiler(cantorisCompilerTextField.getText())
+				.cantorisAssistant(cantorisAssistantCompilerTextField.getText())
 				.build();
 		
 		/*
-		 * generate diary entries
-		 */
-		recordingDiary.generateDiary();
-		
-		/*
-		 * generate duplication diary (builder pattern)
+		 * generate duplication diary using builder pattern
 		 */
 		var duplicationDiary = new DuplicationDiary.DuplicationDiaryBuilder()
 				.recordingDiary(recordingDiary)
 				.build();
 		
 		/*
-		 * generate diary entries
+		 * display dialog
 		 */
-		duplicationDiary.generateDiary();
-		
+		displayDuplicationDiaryDialog(duplicationDiary);
+	}
+
+	private void displayDuplicationDiaryDialog(DuplicationDiary duplicationDiary) {
 		/*
-		 * print to console
+		 * display dialog
 		 */
-		duplicationDiary.printDiaryToConsole();
+		try {
+			logger.info("Loading duplication dialog from fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/duplication.fxml"));
+			DialogPane pane = loader.load();
+			DuplicationDiaryController controller = loader.getController();
+			controller.setDiaryItems(duplicationDiary.getEntries());
+			controller.setYear(duplicationDiary.getDiaryYear());
+
+			pane.getButtonTypes().add(ButtonType.CLOSE);
+			Dialog<ButtonType> dialog = new Dialog<>();
+			dialog.setTitle("Preparation & Duplication Dates");
+			dialog.setDialogPane(pane);
+			dialog.showAndWait()
+				.filter(response -> response == ButtonType.CLOSE)
+				.ifPresent(bt -> logger.info("Close duplication dates dialog"));
+		} catch (IOException e) {
+			logger.error("I/O exception occurred while loading duplication dialog - {}", e.getMessage());
+			var alert = new Alert(AlertType.ERROR);
+			alert.setTitle(FATAL_ERROR);
+			alert.setHeaderText("Error Loading Form");
+			alert.setContentText("An exception occurred during the form loading process. See log file for details!");
+			alert.showAndWait();
+			Platform.exit();	
+		}
+		
 	}
 
 	@FXML
 	public void handleBankHolidaysButtonAction(ActionEvent event) {
+		displayBankHolidayDialog();
 	}
 	
+	private void displayBankHolidayDialog() {
+		/*
+		 * display dialog
+		 */
+		try {
+			logger.info("Loading bank holiday dialog from fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/bank-holiday.fxml"));
+			DialogPane pane = loader.load();
+			pane.getButtonTypes().add(ButtonType.CLOSE);
+			Dialog<ButtonType> dialog = new Dialog<>();
+			dialog.setTitle("Bank Holidays");
+			dialog.setDialogPane(pane);
+			dialog.showAndWait()
+				.filter(response -> response == ButtonType.CLOSE)
+				.ifPresent(bt -> logger.info("Close bank holidaydialog"));
+		} catch (IOException e) {
+			logger.error("I/O exception occurred while loading bank holiday dialog - {}", e.getMessage());
+			var alert = new Alert(AlertType.ERROR);
+			alert.setTitle(FATAL_ERROR);
+			alert.setHeaderText("Error Loading Form");
+			alert.setContentText("An exception occurred during the form loading process. See log file for details!");
+			alert.showAndWait();
+			Platform.exit();	
+		}
+		
+	}
+
 	/**
 	 * Validate Form
 	 * 
@@ -291,8 +373,7 @@ public class MainFormController  implements Initializable, FormBean {
 	 * 
 	 * @return validation status false=failed, true=passed
 	 */
-	@Override
-	public boolean validateForm() {
+	private boolean validateForm() {
 		
 		/*
 		 * check year in bounds
@@ -301,7 +382,7 @@ public class MainFormController  implements Initializable, FormBean {
 		if (year < 2000 || year > 2500) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(YEAR_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText("Year should be between 2000 and 2500");
 			alert.showAndWait();
 			return false;
@@ -316,7 +397,7 @@ public class MainFormController  implements Initializable, FormBean {
 			if (edition <= 0) {
 				var alert = new Alert(AlertType.ERROR);
 				alert.setTitle(DIARY_ERROR_TITLE);
-				alert.setHeaderText(EDITION_ERROR_HEADER);
+				alert.setHeaderText(INPUT_ERROR_HEADER);
 				alert.setContentText(String.format("Edition should be greater than 0. You entered %d", edition));
 				alert.showAndWait();
 				return false;
@@ -324,7 +405,7 @@ public class MainFormController  implements Initializable, FormBean {
 		} catch (NumberFormatException ex) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(EDITION_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText("Edition field should be numeric");
 			alert.showAndWait();
 			return false;
@@ -338,7 +419,7 @@ public class MainFormController  implements Initializable, FormBean {
 		if (date == null) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(DATE_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText("Please enter a date");
 			alert.showAndWait();
 			return false;
@@ -353,7 +434,7 @@ public class MainFormController  implements Initializable, FormBean {
 		if (date.getYear() != year) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(DATE_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText(String.format("The selected date %s should match selected year %d", formattedDate, year));
 			alert.showAndWait();
 			return false;
@@ -365,7 +446,7 @@ public class MainFormController  implements Initializable, FormBean {
 		if (date.getMonth() != Month.JANUARY) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(DATE_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText(String.format("The selected date %s should be in January not %s", formattedDate, date.getMonth()));
 			alert.showAndWait();
 			return false;
@@ -377,7 +458,7 @@ public class MainFormController  implements Initializable, FormBean {
 		if (date.getDayOfWeek() != DayOfWeek.MONDAY && date.getDayOfWeek() != DayOfWeek.TUESDAY) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
-			alert.setHeaderText(DATE_ERROR_HEADER);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
 			alert.setContentText(String.format("The selected date %s should fall on a Monday or Tuesday. You entered a date that falls on a %s", formattedDate, date.getDayOfWeek()));
 			alert.showAndWait();
 			return false;

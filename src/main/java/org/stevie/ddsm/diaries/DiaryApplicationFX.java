@@ -10,6 +10,8 @@
  */
 package org.stevie.ddsm.diaries;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,6 +24,8 @@ public class DiaryApplicationFX extends Application {
 
 	private ConfigurableApplicationContext applicationContext;
 
+	private static Logger logger = LoggerFactory.getLogger(DiaryApplicationFX.class);
+
 	/**
 	 * JavaFX start method
 	 * 
@@ -32,6 +36,7 @@ public class DiaryApplicationFX extends Application {
 	 */
 	@Override
 	public void start(Stage stage) {
+		logger.info("Diary application started");
 		applicationContext.publishEvent(new StageReadyEvent(stage));
 	}
 	
@@ -43,6 +48,7 @@ public class DiaryApplicationFX extends Application {
 	 */
 	@Override
 	public void init() {
+		logger.info("Initialise application context");
 		applicationContext = new SpringApplicationBuilder(DdsmDiariesApplication.class).run();
 	}
 	
@@ -55,6 +61,7 @@ public class DiaryApplicationFX extends Application {
 	 */
 	@Override
 	public void stop() {
+		logger.info("Diary application stopped");
 		applicationContext.close();
 		Platform.exit();
 	}

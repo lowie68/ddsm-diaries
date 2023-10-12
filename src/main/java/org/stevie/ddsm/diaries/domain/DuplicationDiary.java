@@ -18,7 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public final class DuplicationDiary implements DdsmDiary {
+
+	private static Logger logger = LoggerFactory.getLogger(DuplicationDiary.class);
 
 	/**
 	 * Date Arithmetic
@@ -40,6 +45,7 @@ public final class DuplicationDiary implements DdsmDiary {
 	private DuplicationDiary(DuplicationDiaryBuilder builder) {
 		this.recordingDiary = builder.recordingDiary;
 		this.diaryYear = this.recordingDiary.getDiaryYear();
+		generateDiary();
 	}
 
 	/**
@@ -47,8 +53,7 @@ public final class DuplicationDiary implements DdsmDiary {
 	 * Get all the recording diary entries. For each entry calculate the first Tuesday in the
 	 * following week. This is  
 	 */
-	@Override
-	public void generateDiary() {
+	private void generateDiary() {
 		/*
 		 * fetch recording diary entries
 		 */
@@ -77,19 +82,22 @@ public final class DuplicationDiary implements DdsmDiary {
 	/**
 	 * Print Diary
 	 * 
-	 * Print the diary entries to the console. To be upgraded later.
+	 * Print the diary entries to the console.
 	 * 
 	 */
 	@Override
 	public void printDiaryToConsole() {
-		System.out.println("DUPLICATION DATES " + recordingDiary.getDiaryYear());
+		logger.info("DUPLICATION DATES {}", recordingDiary.getDiaryYear());
 		for (DuplicationDiaryEntry entry : diaryEntries) {
 			var sb = new StringBuilder();
 			sb.append(entry.month()+ " ");
 			sb.append("Tuesday=" + entry.bookingInDate().getDayOfMonth() + " ");
 			sb.append("Wednesday=" + entry.barcodingDate().getDayOfMonth() + " ");
 			sb.append("Thursday=" + entry.duplicationDate().getDayOfMonth());
-			System.out.println(sb);
+			if (!sb.toString().isEmpty()) {
+				var str = sb.toString();
+				logger.info(str);
+			}
 		}
 	}
 
@@ -111,7 +119,7 @@ public final class DuplicationDiary implements DdsmDiary {
 	 * Returns all the entries in the diary. These are copied to an observable list for presentation in
 	 * the UI. The method returns a defensive copy to preserve the invariants of the class.
 	 * 
-	 * @return list of entries 12 in number 
+	 * @return list of entries 12 in total 
 	 * 
 	 */
 	public List<DuplicationDiaryEntry> getEntries() {
@@ -136,16 +144,9 @@ public final class DuplicationDiary implements DdsmDiary {
 		}
 
 		public DuplicationDiary build() {
-			DuplicationDiary diary = new DuplicationDiary(this);
-			validateDiaryObject(diary);
-			return diary;
+			return new DuplicationDiary(this);
 		}
 
-		private void validateDiaryObject(DuplicationDiary diary) {
-			// TODO Auto-generated method stub
-		}
-		
-		
 	}
 
 }

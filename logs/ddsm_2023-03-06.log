@@ -1,0 +1,9 @@
+2023-03-06 18:26:17 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-06 18:26:17 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 20224 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-06 18:26:17 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-06 18:26:18 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.594 seconds (JVM running for 2.837)
+2023-03-06 18:26:18 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-06 18:26:18 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-06 18:26:19 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-06 18:26:19 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-06 18:26:49 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped

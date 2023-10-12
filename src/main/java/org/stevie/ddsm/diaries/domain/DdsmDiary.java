@@ -6,8 +6,7 @@
  */
 package org.stevie.ddsm.diaries.domain;
 
-public interface DdsmDiary {
-	public void generateDiary();
+public sealed interface DdsmDiary permits RecordingDiary, DuplicationDiary {
 	public void printDiaryToConsole();
 	int getDiaryYear();
 }

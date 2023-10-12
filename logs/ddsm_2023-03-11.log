@@ -1,0 +1,196 @@
+2023-03-11 15:53:18 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 15:53:19 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 18492 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 15:53:19 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 15:53:21 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.919 seconds (JVM running for 6.357)
+2023-03-11 15:53:21 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 15:53:21 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 15:53:21 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 15:53:21 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 15:53:38 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 15:53:47 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 15:54:14 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 15:54:16 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 15:55:07 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 15:55:08 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 32052 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 15:55:08 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 15:55:09 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.517 seconds (JVM running for 2.586)
+2023-03-11 15:55:09 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 15:55:09 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 15:55:09 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 15:55:09 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 15:55:11 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 15:55:12 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 15:55:23 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 15:55:26 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:17:57 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:17:58 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 29268 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:17:58 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:17:59 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.45 seconds (JVM running for 2.487)
+2023-03-11 16:17:59 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:17:59 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:17:59 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:17:59 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:18:01 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:18:01 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:18:10 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:18:11 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:18:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:18:26 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:20:23 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:20:23 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 3084 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:20:24 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:20:24 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.502 seconds (JVM running for 2.505)
+2023-03-11 16:20:25 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:20:25 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:20:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:20:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:20:29 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:20:29 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:20:33 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:20:33 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:20:52 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:20:54 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:21:15 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:21:15 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 17748 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:21:15 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:21:17 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.594 seconds (JVM running for 2.607)
+2023-03-11 16:21:17 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:21:17 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:21:17 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:21:17 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:21:19 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:21:19 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:21:21 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:21:22 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:22:01 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2022
+2023-03-11 16:22:01 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:22:40 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:22:42 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:24:58 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:24:59 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 26752 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:24:59 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:25:00 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.503 seconds (JVM running for 2.486)
+2023-03-11 16:25:00 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:25:00 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:25:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:25:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:25:05 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:25:05 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:25:09 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:25:10 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:25:17 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:25:19 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:25:38 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:25:39 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 10828 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:25:39 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:25:40 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.554 seconds (JVM running for 2.552)
+2023-03-11 16:25:40 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:25:40 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:25:40 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:25:40 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:25:43 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:25:43 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:25:46 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:25:47 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:26:09 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:26:10 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:26:25 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:26:26 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 16292 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:26:26 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:26:27 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.503 seconds (JVM running for 2.517)
+2023-03-11 16:26:27 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:26:27 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:26:27 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:26:27 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:26:29 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:26:29 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:26:31 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:26:31 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:26:55 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2022
+2023-03-11 16:26:55 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:27:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:27:35 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-11 16:27:35 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-11 16:27:46 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-11 16:27:56 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading recording dialog from fxml
+2023-03-11 16:27:56 [JavaFX Application Thread] INFO  o.s.d.d.c.RecordingDiaryController - Initialising recording dates form in form controller
+2023-03-11 16:28:02 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close recording dates dialog
+2023-03-11 16:28:05 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:32:26 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:32:27 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 10516 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:32:27 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:32:28 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.511 seconds (JVM running for 2.527)
+2023-03-11 16:32:28 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:32:28 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:32:28 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:32:28 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:32:31 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:32:31 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:32:33 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:32:34 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:32:57 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2022
+2023-03-11 16:32:57 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:33:13 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:33:15 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:41:45 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:41:45 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 19732 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:41:45 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:41:46 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.542 seconds (JVM running for 2.592)
+2023-03-11 16:41:46 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:41:46 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:41:47 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:41:47 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:41:49 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:41:49 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:41:51 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:41:52 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:42:00 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:42:02 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:44:45 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:44:45 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 24328 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:44:45 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:44:46 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.482 seconds (JVM running for 2.487)
+2023-03-11 16:44:46 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:44:46 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:44:47 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:44:47 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:44:49 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:44:49 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:44:51 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:44:52 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:45:03 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2022
+2023-03-11 16:45:03 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:45:10 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:45:12 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 16:47:46 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 16:47:47 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 27212 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 16:47:47 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 16:47:48 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.533 seconds (JVM running for 2.586)
+2023-03-11 16:47:48 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 16:47:48 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 16:47:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 16:47:48 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 16:47:50 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 16:47:51 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 16:47:56 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2022
+2023-03-11 16:47:57 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:48:05 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 16:48:05 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 16:48:26 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 16:48:34 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped
+2023-03-11 20:26:23 [JavaFX-Launcher] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Initialise application context
+2023-03-11 20:26:23 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Starting application using Java 19 on DESKTOP-ATTKBVC with PID 30416 (started by steph in C:\Users\steph\eclipse-workspace\ddsm-diaries)
+2023-03-11 20:26:23 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-11 20:26:24 [JavaFX-Launcher] INFO  o.s.boot.SpringApplication - Started application in 1.629 seconds (JVM running for 2.723)
+2023-03-11 20:26:24 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application started
+2023-03-11 20:26:24 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.StageInitialiser - Loading main form from fxml
+2023-03-11 20:26:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Initialising main form in form controller
+2023-03-11 20:26:25 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Configuring internet status checker
+2023-03-11 20:26:42 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Loading bank holiday dialog from fxml
+2023-03-11 20:26:42 [JavaFX Application Thread] INFO  o.s.d.d.c.BankHolidayDialogController - Initialising bank holiday form in form controller
+2023-03-11 20:26:43 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2023
+2023-03-11 20:26:44 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 20:26:56 [JavaFX Application Thread] INFO  o.s.d.d.service.BankHolidayService - Retrieving bank holidays for year 2024
+2023-03-11 20:26:56 [reactor-http-nio-2] INFO  o.s.d.d.service.BankHolidayService - Connected to internet!
+2023-03-11 20:27:32 [JavaFX Application Thread] INFO  o.s.d.d.c.MainFormController - Close bank holidaydialog
+2023-03-11 20:27:47 [JavaFX Application Thread] INFO  o.s.ddsm.diaries.DiaryApplicationFX - Diary application stopped

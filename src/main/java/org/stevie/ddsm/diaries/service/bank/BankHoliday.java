@@ -4,7 +4,7 @@
  * This class is the object which is mapped to the JSON retrieved from the bank holiday REST API
  * 
  */
-package org.stevie.ddsm.diaries.domain;
+package org.stevie.ddsm.diaries.service.bank;
 
 import java.time.LocalDate;
 import java.util.Arrays;

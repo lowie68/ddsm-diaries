@@ -15,9 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 import javafx.application.Application;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"org.stevie.ddsm.diaries", "org.stevie.ddsm.diaries.controllers", "org.stevie.ddsm.diaries.ui", "org.stevie.ddsm.diaries.service"})
+@ComponentScan(basePackages = {"org.stevie.ddsm.diaries", "org.stevie.ddsm.diaries.controllers", "org.stevie.ddsm.diaries.service.internet","org.stevie.ddsm.diaries.service.month", "org.stevie.ddsm.diaries.service.bank"})
 public class DdsmDiariesApplication {
-
 	public static void main(String[] args) {
 		Application.launch(DiaryApplicationFX.class, args);
 	}

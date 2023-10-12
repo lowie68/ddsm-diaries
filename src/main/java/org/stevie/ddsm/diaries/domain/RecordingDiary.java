@@ -2,7 +2,7 @@
  * Recording Diary Class
  * 
  * DDSM recordings are done once a month on the first Monday or Tuesday of the month. If the date falls
- * the recordings are done the following week. There are two recording teams containing one compiler and 
+ * on a bank holiday the recordings are done the following week. There are two recording teams containing one compiler and 
  * one assistant who work on alternate months. These are known as Decani team and Cantoris team.
  * The date of the first edition in a new year has to be input manually. A recording diary consists
  * of 12 entries one for each month. The builder pattern has been used when creating new objects.
@@ -12,14 +12,18 @@ package org.stevie.ddsm.diaries.domain;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.stevie.ddsm.diaries.service.BankHolidayService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.stevie.ddsm.diaries.service.bank.BankHolidayService;
 
 
 public final class RecordingDiary implements DdsmDiary {
+
+	private static Logger logger = LoggerFactory.getLogger(RecordingDiary.class);
 	
 	private List<RecordingDiaryEntry> diaryEntries = new ArrayList<>();
 	private int diaryYear;
@@ -40,10 +44,11 @@ public final class RecordingDiary implements DdsmDiary {
 		this.decaniAssistant = builder.decaniAssistant;
 		this.cantorisCompiler = builder.cantorisCompiler;
 		this.cantorisAssistant = builder.cantorisAssistant;
+		generateDiary();
 	}
 
 	/**
-	 * Get Entries
+	 * Get Entries Method
 	 * 
 	 * Returns all the entries in the diary. These are copied to an observable list for presentation in
 	 * the UI. The method returns a defensive copy to preserve the invariants of the class.
@@ -56,7 +61,7 @@ public final class RecordingDiary implements DdsmDiary {
 	}
 	
 	/**
-	 * Get Diary Year
+	 * Get Diary Year Method
 	 * 
 	 * Returns the year of the diary
 	 */
@@ -66,14 +71,13 @@ public final class RecordingDiary implements DdsmDiary {
 	}
 	
 	/**
-	 * Generate Diary
+	 * Generate Diary Method
 	 * 
 	 * Creates the diary entries. The method generates the January edition which is specified
 	 * by the user. The method then uses this date and generates the February to December entries.  
 	 * 
 	 */
-	@Override
-	public void generateDiary() {
+	private void generateDiary() {
 		
 		/*
 		 * use toggle to flip to alternate team
@@ -81,14 +85,14 @@ public final class RecordingDiary implements DdsmDiary {
 		boolean toggle = false;
 
 		/*
-		 * create the january entry
+		 * create the January entry
 		 */
 		if (januaryEdition.getDayOfWeek() == DayOfWeek.MONDAY) {
-			createMondayEntry(januaryEdition);
+			createMondayEntry(januaryEdition, 1);
 			toggle = true;
 		}
 		else {
-			createTuesdayEntry(januaryEdition);
+			createTuesdayEntry(januaryEdition, 1);
 			toggle = false;
 		}
 		
@@ -99,10 +103,10 @@ public final class RecordingDiary implements DdsmDiary {
 			var current = LocalDate.of(this.diaryYear, month, 1);
 			if (toggle) { 
 				var firstTuesday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.TUESDAY));
-				createTuesdayEntry(firstTuesday);
+				createTuesdayEntry(firstTuesday, month);
 			} else {
 				var firstMonday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
-				createMondayEntry(firstMonday);
+				createMondayEntry(firstMonday, month);
 			}
 			toggle = !toggle;
 		}
@@ -110,61 +114,66 @@ public final class RecordingDiary implements DdsmDiary {
 	}
 
 	/**
-	 * Create Monday Entry
+	 * Create Monday Entry Method
 	 * 
 	 * If the first Monday of the month falls on a bank holiday, the recording is done on the following week.
 	 * 
 	 * @param monday date
 	 */
-	private void createMondayEntry(LocalDate monday) {
+	private void createMondayEntry(LocalDate monday, int month) {
 		if (BankHolidayService.isBankHoliday(monday)) { 
 			var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(monday);
-			var entry = new RecordingDiaryEntry(afterBankHoliday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
+			var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
 			diaryEntries.add(entry);
 		}
 		else {
-			var entry = new RecordingDiaryEntry(monday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
+			var entry = new RecordingDiaryEntry(Month.of(month), monday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
 			diaryEntries.add(entry);
 		}
 	}
 
 	/**
-	 * Create Tuesday Entry
+	 * Create Tuesday Entry Method
 	 * 
 	 * If the first Tuesday of the month falls on a bank holiday, the recording is done on the following week.
 	 * 
 	 * @param tuesday date
+	 * @param month 
 	 */
-	private void createTuesdayEntry(LocalDate tuesday) {
+	private void createTuesdayEntry(LocalDate tuesday, int month) {
 		if (BankHolidayService.isBankHoliday(tuesday)) { 
 			var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(tuesday);
-			var entry = new RecordingDiaryEntry(afterBankHoliday, this.edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
+			var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
 			diaryEntries.add(entry);
 		}
 		else {
-			var entry = new RecordingDiaryEntry(tuesday, this.edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
+			var entry = new RecordingDiaryEntry(Month.of(month), tuesday, this.edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
 			diaryEntries.add(entry);
 		}
 	}
 
 	/**
-	 * Print Diary
+	 * Print Diary To Console Method
 	 * 
-	 * Print the diary entries to the console. To be upgraded later.
+	 * Print the diary entries to the console
 	 * 
 	 */
 	@Override
 	public void printDiaryToConsole() {
-		System.out.println("RECORDING DATES " + this.diaryYear);
+		logger.info("RECORDING DATES {}", this.diaryYear);
 		for (RecordingDiaryEntry entry : diaryEntries) {
 			var sb = new StringBuilder();
+			sb.append("Month=" + entry.month() + " ");
 			sb.append("Date=" + entry.recordingDate() + " ");
 			sb.append("(" + entry.recordingDate().getDayOfWeek() + ") ");
 			sb.append("Edition=" + entry.edition() + " ");
 			sb.append("Team=" + entry.team() + " ");
 			sb.append("Compiler=" + entry.compiler() + " ");
 			sb.append("Assistant=" + entry.assistantCompiler());
-			System.out.println(sb);
+			if (!sb.toString().isEmpty()) {
+				var str = sb.toString();
+				logger.info(str);
+			}
 		}
 	}
 	/**
@@ -226,13 +235,7 @@ public final class RecordingDiary implements DdsmDiary {
 		}
 
 		public RecordingDiary build() {
-			RecordingDiary diary = new RecordingDiary(this);
-			validateDiaryObject(diary);
-			return diary;
-		}
-
-		private void validateDiaryObject(RecordingDiary diary) {
-			// TODO Auto-generated method stub
+			return new RecordingDiary(this);
 		}
 
 	}
