@@ -10,10 +10,7 @@
  */
 package org.stevie.ddsm.diaries.domain;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,19 +21,6 @@ import org.slf4j.LoggerFactory;
 public final class DuplicationDiary implements DdsmDiary {
 
 	private static Logger logger = LoggerFactory.getLogger(DuplicationDiary.class);
-
-	/**
-	 * Date Arithmetic
-	 * 
-	 * Calculates the first Tuesday of the week following the recording date.
-	 */
-	static TemporalAdjuster NEXT_WEEK_TUESDAY = TemporalAdjusters.ofDateAdjuster(date -> {
-	    DayOfWeek dayOfWeek = date.getDayOfWeek();
-	    if (dayOfWeek == DayOfWeek.MONDAY)
-		    return date.plusDays(8L);
-	    else
-	        return date.plusDays(7L);
-	});
 
 	private RecordingDiary recordingDiary;
 	private List<DuplicationDiaryEntry> diaryEntries = new ArrayList<>();
@@ -73,10 +57,9 @@ public final class DuplicationDiary implements DdsmDiary {
 	 */
 	private DuplicationDiaryEntry buildDuplicationEntry(RecordingDiaryEntry re) {
 		Objects.requireNonNull(re);
-		LocalDate tuesday = re.recordingDate().with(NEXT_WEEK_TUESDAY);
-		LocalDate wednesday = tuesday.plusDays(1L);
-		LocalDate thursday = wednesday.plusDays(1L);
-		return new DuplicationDiaryEntry(re.recordingDate().getMonth(), tuesday, wednesday, thursday);
+		LocalDate nextWednesday = re.recordingDate().plusDays(9L);
+		LocalDate nextThursday = re.recordingDate().plusDays(10L);
+		return new DuplicationDiaryEntry(re.recordingDate().getMonth(), nextWednesday, nextThursday);
 	}
 
 	/**
@@ -91,7 +74,6 @@ public final class DuplicationDiary implements DdsmDiary {
 		for (DuplicationDiaryEntry entry : diaryEntries) {
 			var sb = new StringBuilder();
 			sb.append(entry.month()+ " ");
-			sb.append("Tuesday=" + entry.bookingInDate().getDayOfMonth() + " ");
 			sb.append("Wednesday=" + entry.barcodingDate().getDayOfMonth() + " ");
 			sb.append("Thursday=" + entry.duplicationDate().getDayOfMonth());
 			if (!sb.toString().isEmpty()) {

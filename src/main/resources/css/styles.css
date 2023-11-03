@@ -66,9 +66,15 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
+
 .table-row-cell:even {
     -fx-background-color: lightgrey;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
+
+.split-pane {
+	-fx-background-color: black;
+}
+
 

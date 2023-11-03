@@ -78,19 +78,10 @@ public final class DuplicationDiaryController implements Initializable {
 		monthColumn.setCellValueFactory(dde -> new SimpleStringProperty(dde.getValue().month().toString()));
 
 		/*
-		 * tuesday booking in day column
-		 */
-		TableColumn<DuplicationDiaryEntry, String> tuesdayColumn = new TableColumn<>("Booking In Tuesday");
-		tuesdayColumn.setCellValueFactory(dde -> {
-			var day = dde.getValue().bookingInDate().getDayOfMonth();
-			var str = Integer.toString(day) + MonthService.getEnding(day);
-			return new SimpleStringProperty(str);
-		});
-
-		/*
 		 * wednesday barcoding and admin column
 		 */
 		TableColumn<DuplicationDiaryEntry, String> wednesdayColumn = new TableColumn<>("Barcoding & Admin Wednesday");
+		wednesdayColumn.setStyle("-fx-alignment: center;");
 		wednesdayColumn.setCellValueFactory(dde -> {
 			var day = dde.getValue().barcodingDate().getDayOfMonth();
 			var str = Integer.toString(day) + MonthService.getEnding(day);
@@ -101,6 +92,7 @@ public final class DuplicationDiaryController implements Initializable {
 		 * thursday duplication column
 		 */
 		TableColumn<DuplicationDiaryEntry, String> thursdayColumn = new TableColumn<>("Duplication Thursday");
+		thursdayColumn.setStyle("-fx-alignment: center;");
 		thursdayColumn.setCellValueFactory(dde -> {
 			var day = dde.getValue().duplicationDate().getDayOfMonth();
 			var str = Integer.toString(day) + MonthService.getEnding(day);
@@ -111,7 +103,7 @@ public final class DuplicationDiaryController implements Initializable {
 		/*
 		 * add columns to table view (causes type safety warning)
 		 */
-		diaryTableView.getColumns().addAll(monthColumn, tuesdayColumn, wednesdayColumn, thursdayColumn);
+		diaryTableView.getColumns().addAll(monthColumn, wednesdayColumn, thursdayColumn);
 	}
 
 	/**

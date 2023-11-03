@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.stevie.ddsm.diaries.domain.DuplicationDiary;
 import org.stevie.ddsm.diaries.domain.RecordingDiary;
+import org.stevie.ddsm.diaries.service.bank.BankHolidayService;
 import org.stevie.ddsm.diaries.service.internet.InternetStatusService;
 
 import javafx.application.Platform;
@@ -64,13 +65,9 @@ public class MainFormController  implements Initializable {
 	@FXML
 	private DatePicker januaryEditionDatePicker;
 	@FXML
-	private TextField decaniCompilerTextField;
+	private TextField compiler_1TextField;
 	@FXML
-	private TextField decaniAssistantCompilerTextField;
-	@FXML
-	private TextField cantorisCompilerTextField;
-	@FXML
-	private TextField cantorisAssistantCompilerTextField;
+	private TextField compiler_2TextField;
 	@FXML
 	private Button generateRecordingDiaryButton;
 	@FXML
@@ -218,10 +215,8 @@ public class MainFormController  implements Initializable {
 				.diaryYear(diaryYearChoiceBox.getValue())
 				.edition(Integer.valueOf(magazineEditionTextField.getText()))
 				.januaryEdition(januaryEditionDatePicker.getValue())
-				.decaniCompiler(decaniCompilerTextField.getText())
-				.decaniAssistant(decaniAssistantCompilerTextField.getText())
-				.cantorisCompiler(cantorisCompilerTextField.getText())
-				.cantorisAssistant(cantorisAssistantCompilerTextField.getText())
+				.compiler_1(compiler_1TextField.getText())
+				.compiler_2(compiler_2TextField.getText())
 				.build();
 		
 		/*
@@ -283,10 +278,8 @@ public class MainFormController  implements Initializable {
 				.diaryYear(diaryYearChoiceBox.getValue())
 				.edition(Integer.valueOf(magazineEditionTextField.getText()))
 				.januaryEdition(januaryEditionDatePicker.getValue())
-				.decaniCompiler(decaniCompilerTextField.getText())
-				.decaniAssistant(decaniAssistantCompilerTextField.getText())
-				.cantorisCompiler(cantorisCompilerTextField.getText())
-				.cantorisAssistant(cantorisAssistantCompilerTextField.getText())
+				.compiler_1(compiler_1TextField.getText())
+				.compiler_2(compiler_2TextField.getText())
 				.build();
 		
 		/*
@@ -453,17 +446,29 @@ public class MainFormController  implements Initializable {
 		}
 		
 		/*
-		 * make sure january date falls on a Monday or Tuesday
+		 * make sure january date falls on a Monday
 		 */
-		if (date.getDayOfWeek() != DayOfWeek.MONDAY && date.getDayOfWeek() != DayOfWeek.TUESDAY) {
+		if (date.getDayOfWeek() != DayOfWeek.MONDAY) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(DIARY_ERROR_TITLE);
 			alert.setHeaderText(INPUT_ERROR_HEADER);
-			alert.setContentText(String.format("The selected date %s should fall on a Monday or Tuesday. You entered a date that falls on a %s", formattedDate, date.getDayOfWeek()));
+			alert.setContentText(String.format("The selected date %s should fall on a Monday. You entered a date that falls on a %s", formattedDate, date.getDayOfWeek()));
 			alert.showAndWait();
 			return false;
 		}
 		
+		/*
+		 * make sure january date is not a bank holiday
+		 */
+		if (BankHolidayService.isBankHoliday(date)) {
+			var alert = new Alert(AlertType.ERROR);
+			alert.setTitle(DIARY_ERROR_TITLE);
+			alert.setHeaderText(INPUT_ERROR_HEADER);
+			alert.setContentText(String.format("The selected date is a bank holiday"));
+			alert.showAndWait();
+			return false;
+		}
+
 		return true;
 	}
 }

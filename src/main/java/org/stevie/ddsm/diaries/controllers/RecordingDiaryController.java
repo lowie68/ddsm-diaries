@@ -79,7 +79,7 @@ public final class RecordingDiaryController implements Initializable {
 		/*
 		 * date column (date + day of week)
 		 */
-		TableColumn<RecordingDiaryEntry, String> dateColumn = new TableColumn<>("First Monday or Tuesday in Month");
+		TableColumn<RecordingDiaryEntry, String> dateColumn = new TableColumn<>("First Monday in Month");
 		dateColumn.setCellValueFactory(rde -> {
 			var date = rde.getValue().recordingDate();
 			var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -95,29 +95,17 @@ public final class RecordingDiaryController implements Initializable {
 		editionColumn.setCellValueFactory(rde -> new SimpleIntegerProperty(rde.getValue().edition()).asObject());
 
 		/*
-		 * team column
-		 */
-		TableColumn<RecordingDiaryEntry, String> teamColumn = new TableColumn<>("Team");
-		teamColumn.setCellValueFactory(rde -> new SimpleStringProperty(rde.getValue().team().toString()));
-		
-		/*
 		 * compiler column
 		 */
 		TableColumn<RecordingDiaryEntry, String> compilerColumn = new TableColumn<>("Compiler");
 		compilerColumn.setCellValueFactory(rde -> new SimpleStringProperty(rde.getValue().compiler()));
-
-		/*
-		 * assistant compiler column
-		 */
-		TableColumn<RecordingDiaryEntry, String> assistantColumn = new TableColumn<>("Assistant Compiler");
-		assistantColumn.setCellValueFactory(rde -> new SimpleStringProperty(rde.getValue().assistantCompiler()));
 
 		diaryTableView.getColumns().clear();
 		
 		/*
 		 * add columns to table view (causes type safety warning)
 		 */
-		diaryTableView.getColumns().addAll(monthColumn, dateColumn, editionColumn, teamColumn, compilerColumn, assistantColumn);
+		diaryTableView.getColumns().addAll(monthColumn, dateColumn, editionColumn, compilerColumn);
 	}
 
 	/**

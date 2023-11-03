@@ -29,21 +29,15 @@ public final class RecordingDiary implements DdsmDiary {
 	private int diaryYear;
 	private LocalDate januaryEdition;
 	private int edition;
-	private Team team;
-	private String decaniCompiler;
-	private String decaniAssistant;
-	private String cantorisCompiler;
-	private String cantorisAssistant;
+	private String compiler_1;
+	private String compiler_2;
 
 	private RecordingDiary(RecordingDiaryBuilder builder) {
 		this.diaryYear = builder.diaryYear;
 		this.januaryEdition = builder.januaryEdition;
 		this.edition = builder.edition;
-		this.team = builder.team;
-		this.decaniCompiler = builder.decaniCompiler;
-		this.decaniAssistant = builder.decaniAssistant;
-		this.cantorisCompiler = builder.cantorisCompiler;
-		this.cantorisAssistant = builder.cantorisAssistant;
+		this.compiler_1 = builder.compiler_1;
+		this.compiler_2 = builder.compiler_2;
 		generateDiary();
 	}
 
@@ -80,77 +74,30 @@ public final class RecordingDiary implements DdsmDiary {
 	private void generateDiary() {
 		
 		/*
-		 * use toggle to flip to alternate team
-		 */
-		boolean toggle = false;
-
-		/*
 		 * create the January entry
 		 */
-		if (januaryEdition.getDayOfWeek() == DayOfWeek.MONDAY) {
-			createMondayEntry(januaryEdition, 1);
-			toggle = true;
-		}
-		else {
-			createTuesdayEntry(januaryEdition, 1);
-			toggle = false;
-		}
+		var januaryEntry = new RecordingDiaryEntry(Month.of(1), this.januaryEdition, this.edition++, this.compiler_1);
+		diaryEntries.add(januaryEntry);
 		
 		/*
 		 * create the February to December entries
 		 */
 		for (int month = 2; month <= 12; month++) {
+			var compiler = month%2 != 0 ? this.compiler_1 : this.compiler_2;
 			var current = LocalDate.of(this.diaryYear, month, 1);
-			if (toggle) { 
-				var firstTuesday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.TUESDAY));
-				createTuesdayEntry(firstTuesday, month);
+			var firstMonday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
+			if (BankHolidayService.isBankHoliday(firstMonday)) { 
+				var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(firstMonday);
+				var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, this.edition++, compiler);
+				diaryEntries.add(entry);
 			} else {
-				var firstMonday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
-				createMondayEntry(firstMonday, month);
+				var entry = new RecordingDiaryEntry(Month.of(month), firstMonday, this.edition++, compiler);
+				diaryEntries.add(entry);
 			}
-			toggle = !toggle;
 		}
 
 	}
 
-	/**
-	 * Create Monday Entry Method
-	 * 
-	 * If the first Monday of the month falls on a bank holiday, the recording is done on the following week.
-	 * 
-	 * @param monday date
-	 */
-	private void createMondayEntry(LocalDate monday, int month) {
-		if (BankHolidayService.isBankHoliday(monday)) { 
-			var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(monday);
-			var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
-			diaryEntries.add(entry);
-		}
-		else {
-			var entry = new RecordingDiaryEntry(Month.of(month), monday, this.edition++, Team.CANTORIS, this.cantorisCompiler, this.cantorisAssistant);
-			diaryEntries.add(entry);
-		}
-	}
-
-	/**
-	 * Create Tuesday Entry Method
-	 * 
-	 * If the first Tuesday of the month falls on a bank holiday, the recording is done on the following week.
-	 * 
-	 * @param tuesday date
-	 * @param month 
-	 */
-	private void createTuesdayEntry(LocalDate tuesday, int month) {
-		if (BankHolidayService.isBankHoliday(tuesday)) { 
-			var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(tuesday);
-			var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
-			diaryEntries.add(entry);
-		}
-		else {
-			var entry = new RecordingDiaryEntry(Month.of(month), tuesday, this.edition++, Team.DECANI, this.decaniCompiler, this.decaniAssistant);
-			diaryEntries.add(entry);
-		}
-	}
 
 	/**
 	 * Print Diary To Console Method
@@ -167,15 +114,14 @@ public final class RecordingDiary implements DdsmDiary {
 			sb.append("Date=" + entry.recordingDate() + " ");
 			sb.append("(" + entry.recordingDate().getDayOfWeek() + ") ");
 			sb.append("Edition=" + entry.edition() + " ");
-			sb.append("Team=" + entry.team() + " ");
 			sb.append("Compiler=" + entry.compiler() + " ");
-			sb.append("Assistant=" + entry.assistantCompiler());
 			if (!sb.toString().isEmpty()) {
 				var str = sb.toString();
 				logger.info(str);
 			}
 		}
 	}
+	
 	/**
 	 * Builder Pattern
 	 * 
@@ -188,11 +134,8 @@ public final class RecordingDiary implements DdsmDiary {
 		private LocalDate januaryEdition;
 		private int diaryYear;
 		private int edition;
-		private Team team;
-		private String decaniCompiler;
-		private String decaniAssistant;
-		private String cantorisCompiler;
-		private String cantorisAssistant;
+		private String compiler_1;
+		private String compiler_2;
 
 		public RecordingDiaryBuilder januaryEdition(LocalDate januaryEdition) {
 			this.januaryEdition = januaryEdition;
@@ -209,28 +152,13 @@ public final class RecordingDiary implements DdsmDiary {
 			return this;
 		}
 
-		public RecordingDiaryBuilder team(Team team) {
-			this.team = team;
-			return this;
-		}
-
-		public RecordingDiaryBuilder decaniCompiler(String decaniCompiler) {
-			this.decaniCompiler = decaniCompiler;
+		public RecordingDiaryBuilder compiler_1(String compiler_1) {
+			this.compiler_1 = compiler_1;
 			return this;
 		}
 		
-		public RecordingDiaryBuilder decaniAssistant(String decaniAssistant) {
-			this.decaniAssistant = decaniAssistant;
-			return this;
-		}
-
-		public RecordingDiaryBuilder cantorisCompiler(String cantorisCompiler) {
-			this.cantorisCompiler = cantorisCompiler;
-			return this;
-		}
-		
-		public RecordingDiaryBuilder cantorisAssistant(String cantorisAssistant) {
-			this.cantorisAssistant = cantorisAssistant;
+		public RecordingDiaryBuilder compiler_2(String compiler_2) {
+			this.compiler_2 = compiler_2;
 			return this;
 		}
 

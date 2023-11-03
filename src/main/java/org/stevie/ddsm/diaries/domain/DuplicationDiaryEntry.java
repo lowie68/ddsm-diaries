@@ -10,6 +10,6 @@ package org.stevie.ddsm.diaries.domain;
 import java.time.LocalDate;
 import java.time.Month;
 
-public record DuplicationDiaryEntry(Month month, LocalDate bookingInDate, LocalDate barcodingDate, LocalDate duplicationDate) {
+public record DuplicationDiaryEntry(Month month, LocalDate barcodingDate, LocalDate duplicationDate) {
 
 }

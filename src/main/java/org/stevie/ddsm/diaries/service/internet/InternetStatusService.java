@@ -20,8 +20,7 @@ public final class InternetStatusService extends ScheduledService<InternetStatus
         protected InternetStatus call() throws IOException {
         	
         	updateMessage(IN_PROGRESS);
-  			boolean available = InternetService.isInternetAvailable();
-  			if (available) {
+  			if (InternetService.isInternetAvailable()) {
   				updateMessage(INTERNET_AVAILABLE);
   				return InternetStatus.INTERNET_UP;
   			} else {

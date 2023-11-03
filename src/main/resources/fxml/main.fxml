@@ -35,7 +35,7 @@
             </HBox>
             <HBox prefHeight="16.0" prefWidth="596.0">
                <children>
-                  <Label text="Diary Tool">
+                  <Label text="Rota Creator">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
@@ -69,8 +69,6 @@
                         <RowConstraints maxHeight="454.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="487.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Diary Year">
@@ -85,12 +83,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="magazineEditionTextField" prefHeight="25.0" prefWidth="302.0" promptText="Edition Start Point" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Decani Compiler" GridPane.rowIndex="3">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Decani Assistant Compiler" GridPane.rowIndex="4">
+                        <Label text="Compiler 1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -101,20 +94,13 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="januaryEditionDatePicker" prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="decaniCompilerTextField" promptText="Decani Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="decaniAssistantCompilerTextField" promptText="Decani Assistant Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Cantoris Compiler" GridPane.rowIndex="5">
+                        <TextField fx:id="compiler_1TextField" promptText="Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Compiler 2" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cantorisCompilerTextField" promptText="Cantoris Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Cantoris Assistant Compiler" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="cantorisAssistantCompilerTextField" promptText="Cantoris Assistant Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="compiler_2TextField" promptText="Compiler Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
@@ -127,8 +113,8 @@
             </AnchorPane>
             <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="606.0" spacing="10.0">
                <children>
-                  <Button fx:id="generateRecordingDiaryButton" mnemonicParsing="false" onAction="#handleGenerateRecordingDiaryButtonAction" prefHeight="63.0" prefWidth="113.0" text="Recording Diary" wrapText="true" />
-                  <Button fx:id="generateDuplicationDiaryButton" layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleGenerateDuplicationDiaryButtonAction" prefHeight="57.0" prefWidth="115.0" text="Duplication Diary" wrapText="true" />
+                  <Button fx:id="generateRecordingDiaryButton" mnemonicParsing="false" onAction="#handleGenerateRecordingDiaryButtonAction" prefHeight="63.0" prefWidth="113.0" text="Recording Rota" wrapText="true" />
+                  <Button fx:id="generateDuplicationDiaryButton" layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleGenerateDuplicationDiaryButtonAction" prefHeight="57.0" prefWidth="115.0" text="Duplication Rota" wrapText="true" />
                   <Button fx:id="bankHolidaysButton" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleBankHolidaysButtonAction" prefHeight="63.0" prefWidth="109.0" text="Bank Holidays" wrapText="true" />
                </children>
                <padding>

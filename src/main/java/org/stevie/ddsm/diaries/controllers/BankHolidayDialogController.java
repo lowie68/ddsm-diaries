@@ -11,6 +11,7 @@
  */
 package org.stevie.ddsm.diaries.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stevie.ddsm.diaries.service.bank.BankHoliday;
 import org.stevie.ddsm.diaries.service.bank.FetchBankHolidaysTask;
+import org.stevie.ddsm.diaries.service.internet.InternetService;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -33,11 +35,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class BankHolidayDialogController implements Initializable {
@@ -58,8 +61,6 @@ public class BankHolidayDialogController implements Initializable {
 	private Button manualInputButton;
 	@FXML
 	private TableView<BankHoliday> bankHolidayTableView;
-	@FXML
-	private ProgressIndicator bankHolidayProgressIndicator;
 
 	/**
 	 * Initialise Form Method
@@ -138,11 +139,21 @@ public class BankHolidayDialogController implements Initializable {
 	 * 
 	 * @param event
 	 * @return none
+	 * @throws IOException 
 	 */
 	@FXML
-	public void handleFindBankHolidaysButtonAction(ActionEvent event) {
+	public void handleFindBankHolidaysButtonAction(ActionEvent event) throws IOException {
 
 		int currentYear = yearChoiceBox.getValue();
+		
+		if (!InternetService.isInternetAvailable()) {
+			var alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Find Bank Holidays");
+			alert.setHeaderText("No Internet Available");
+			alert.setContentText("Unable to retrieve bank holidays from nager date. Please input them manually");
+			alert.showAndWait();
+			return;
+		}
 		
 		FetchBankHolidaysTask task = new FetchBankHolidaysTask(currentYear);
 		
