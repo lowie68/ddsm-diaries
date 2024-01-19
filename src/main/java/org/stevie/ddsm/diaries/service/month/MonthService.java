@@ -5,15 +5,12 @@
  * diary dialog.</p>
  * 
  * @author Stephen
+ * @version 1.0
  */
-
 package org.stevie.ddsm.diaries.service.month;
 
 import java.util.HashMap;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public final class MonthService {
 		
 	/*
@@ -21,14 +18,23 @@ public final class MonthService {
 	 */
 	private static HashMap<Integer, String> monthMap = new HashMap<>();
 	
+	/**
+	 * Default Constructor
+	 * 
+	 * Prevent end users from creating objects from this class
+	 * 
+	 * @since 1.0
+	 */
 	private MonthService() {
 		
 	}
-	/*
+	
+	/**
 	 * Static constructor
 	 * 
 	 * Initialise the map with the correct endings for each day in a month
 	 * 
+	 * @since 1.0
 	 */
 	static {
 		monthMap.put(1, "st");
@@ -66,12 +72,18 @@ public final class MonthService {
 	}
 	
 	/**
-	 * Get Ending Static Method
+	 * Get Ending Method
+	 * 
 	 * Retrieve correct ending for a particular day in a month 1-31
-	 * @param dayOfTheMonth
+	 * 
+	 * @param day in a month
 	 * @return day ending
+	 * @throws IllegalArgumentException if day is out of bounds
+	 * 
+	 * @since 1.0
 	 */
 	public static String getEnding(int dayOfTheMonth) {
+		
 		/*
 		 * check argument
 		 */
@@ -79,7 +91,7 @@ public final class MonthService {
 			throw new IllegalArgumentException("day of the month should be in the range 1 to 31");
 		
 		/*
-		 * get ending
+		 * return ending
 		 */
 		return monthMap.get(dayOfTheMonth);
 	}

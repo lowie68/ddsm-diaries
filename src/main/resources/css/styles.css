@@ -73,8 +73,20 @@
     -fx-padding: 0.0em;
 }
 
+.table-row-cell:selected {
+   -fx-background-color: steelblue; 
+}
+
+.table-row-cell:selected .text {
+       -fx-fill: white ;
+}
+
 .split-pane {
 	-fx-background-color: black;
+}
+
+.header-title {
+	-fx-text-fill: #60bada;
 }
 
 

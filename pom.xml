@@ -5,17 +5,17 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.6</version>
+		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.stevie</groupId>
 	<artifactId>ddsm-diaries</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ddsm-diaries</name>
-	<description>Demo project for Spring Boot</description>
+	<description>DDSM rota creator with JavaFX</description>
 	<properties>
-		<java.version>19</java.version>
-		<javafxVersion>19</javafxVersion>
+		<java.version>21</java.version>
+		<javafxVersion>21</javafxVersion>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -1,12 +1,13 @@
 /**
- * Recording Diary Class
+ * <h3>Recording Diary Class</h3>
  * 
- * DDSM recordings are done once a month on the first Monday or Tuesday of the month. If the date falls
- * on a bank holiday the recordings are done the following week. There are two recording teams containing one compiler and 
- * one assistant who work on alternate months. These are known as Decani team and Cantoris team.
+ * <p>DDSM recordings are done once a month on the first Monday of the month. If the date falls
+ * on a bank holiday the recordings are done the following week. 
  * The date of the first edition in a new year has to be input manually. A recording diary consists
- * of 12 entries one for each month. The builder pattern has been used when creating new objects.
+ * of 12 entries one for each month. The builder pattern has been used when creating new objects.</p>
  * 
+ * @author Stephen
+ * @version 1.0
  */
 package org.stevie.ddsm.diaries.domain;
 
@@ -20,58 +21,78 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stevie.ddsm.diaries.service.bank.BankHolidayService;
 
+/**
+ * Recording Diary Class
+ * 
+ * This class is part of the model. It is marked with the final keyword to prevent inheritance.
+ * 
+ */
+public final class RecordingDiary extends AbstractDiary<RecordingDiaryEntry> {
 
-public final class RecordingDiary implements DdsmDiary {
-
+	/*
+	 * logging
+	 */
 	private static Logger logger = LoggerFactory.getLogger(RecordingDiary.class);
-	
+	/*
+	 * diary entries (12 per year)
+	 */
 	private List<RecordingDiaryEntry> diaryEntries = new ArrayList<>();
-	private int diaryYear;
+	/*
+	 * date of january edition input manually
+	 */
 	private LocalDate januaryEdition;
+	/*
+	 * edition is incremented by 1 every month and rolls over the following year
+	 */
 	private int edition;
+	/*
+	 * there are two compilers who alternate each month
+	 */
 	private String compiler_1;
 	private String compiler_2;
 
+	/**
+	 * Copy Constructor
+	 * 
+	 * This constructor creates a recording diary object and generates it's entries
+	 * It is marked private to make sure that other classes can only create {@link RecordingDiary}
+	 * objects by using the builder pattern.  
+	 * 
+	 * @since 1.0
+	 */
 	private RecordingDiary(RecordingDiaryBuilder builder) {
-		this.diaryYear = builder.diaryYear;
+		/*
+		 * set properties
+		 */
 		this.januaryEdition = builder.januaryEdition;
 		this.edition = builder.edition;
 		this.compiler_1 = builder.compiler_1;
 		this.compiler_2 = builder.compiler_2;
-		generateDiary();
 	}
 
 	/**
 	 * Get Entries Method
 	 * 
-	 * Returns all the entries in the diary. These are copied to an observable list for presentation in
-	 * the UI. The method returns a defensive copy to preserve the invariants of the class.
+	 * Returns all the entries in the diary. The method returns a defensive copy to preserve the 
+	 * invariants of the class.
 	 * 
-	 * @return list of entries 12 in number 
+	 * @return list of entries (12 in number) 
 	 * 
 	 */
+	@Override
 	public List<RecordingDiaryEntry> getEntries() {
 		return new ArrayList<>(diaryEntries);
 	}
 	
 	/**
-	 * Get Diary Year Method
-	 * 
-	 * Returns the year of the diary
-	 */
-	@Override
-	public int getDiaryYear() {
-		return this.diaryYear;
-	}
-	
-	/**
 	 * Generate Diary Method
 	 * 
-	 * Creates the diary entries. The method generates the January edition which is specified
-	 * by the user. The method then uses this date and generates the February to December entries.  
+	 * This method generates all the entries for this years diary (12 in total).
 	 * 
+	 * @since 1.0
 	 */
-	private void generateDiary() {
+	@Override
+	public void generateDiary() {
 		
 		/*
 		 * create the January entry
@@ -83,14 +104,35 @@ public final class RecordingDiary implements DdsmDiary {
 		 * create the February to December entries
 		 */
 		for (int month = 2; month <= 12; month++) {
+			/*
+			 * compiler alternates between compiler 1 and compiler 2
+			 */
 			var compiler = month%2 != 0 ? this.compiler_1 : this.compiler_2;
-			var current = LocalDate.of(this.diaryYear, month, 1);
+			/*
+			 * current date
+			 */
+			var current = LocalDate.of(getYear(), month, 1);
+			/*
+			 * calculate first Monday in the month
+			 */
 			var firstMonday = current.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
-			if (BankHolidayService.isBankHoliday(firstMonday)) { 
+			/*
+			 * check whether first Monday is a bank holiday
+			 */
+			if (BankHolidayService.isBankHoliday(firstMonday)) { //if the Monday is a bank holiday
+				/*
+				 * find the next non bank holiday
+				 */
 				var afterBankHoliday = BankHolidayService.getNextNonBankHoliday(firstMonday);
+				/*
+				 * create an entry and add it to the diary entries collection
+				 */
 				var entry = new RecordingDiaryEntry(Month.of(month), afterBankHoliday, this.edition++, compiler);
 				diaryEntries.add(entry);
-			} else {
+			} else { // it is not a bank holiday
+				/*
+				 * just create an entry and add it to the entries collection
+				 */
 				var entry = new RecordingDiaryEntry(Month.of(month), firstMonday, this.edition++, compiler);
 				diaryEntries.add(entry);
 			}
@@ -104,10 +146,11 @@ public final class RecordingDiary implements DdsmDiary {
 	 * 
 	 * Print the diary entries to the console
 	 * 
+	 * @since 1.0
 	 */
 	@Override
 	public void printDiaryToConsole() {
-		logger.info("RECORDING DATES {}", this.diaryYear);
+		logger.info("RECORDING DATES {}", getYear());
 		for (RecordingDiaryEntry entry : diaryEntries) {
 			var sb = new StringBuilder();
 			sb.append("Month=" + entry.month() + " ");
@@ -127,23 +170,17 @@ public final class RecordingDiary implements DdsmDiary {
 	 * 
 	 * This class is nested class which is used as part of the builder pattern
 	 * 
-	 * @author steph
+	 * @author Stephen
 	 *
 	 */
 	public static class RecordingDiaryBuilder {
 		private LocalDate januaryEdition;
-		private int diaryYear;
 		private int edition;
 		private String compiler_1;
 		private String compiler_2;
 
 		public RecordingDiaryBuilder januaryEdition(LocalDate januaryEdition) {
 			this.januaryEdition = januaryEdition;
-			return this;
-		}
-
-		public RecordingDiaryBuilder diaryYear(int diaryYear) {
-			this.diaryYear = diaryYear;
 			return this;
 		}
 

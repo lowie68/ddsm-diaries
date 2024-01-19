@@ -1,12 +1,13 @@
 /**
- * <h3>Duplication Diary Dialog</h3>
+ * <h3>Duplication Rota Dialog</h3>
  * 
- * <p>This class is the JavaFX controller for the preparation and duplication dialog (duplication.fxml). This
- * dialog presents the duplication and preparation diary to the user</p>
+ * <p>This class is the MVC controller for the preparation and duplication dialog.
+ * The dialog presents the duplication and preparation rota to the end user</p>
  * 
  * @author Stephen
+ * @version 1.0
+ * 
  */
-
 package org.stevie.ddsm.diaries.controllers;
 
 import java.net.URL;
@@ -26,36 +27,45 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+/**
+ * Duplication Rota Dialog Class
+ * 
+ * JavaFX controller backing the view in duplication.fxml.
+ * 
+ */
 @Component
 public final class DuplicationDiaryController implements Initializable {
-
 	/*
-	 * year of diary
-	 */
-	private SimpleStringProperty diaryYear = new SimpleStringProperty();
-	
-	/*
-	 * JavaFX Controls
+	 * JavaFX controls
 	 */
 	@FXML
-	private Label diaryYearLabel;
+	private Label dialogHeaderLabel;
 	@FXML
 	private TableView<DuplicationDiaryEntry> diaryTableView;
+    @FXML
+    private TableColumn<DuplicationDiaryEntry, String> tuesdayColumn;
+    @FXML
+    private TableColumn<DuplicationDiaryEntry, String> thursdayColumn;
+    @FXML
+    private TableColumn<DuplicationDiaryEntry, String> monthColumn;
+    @FXML
+    private TableColumn<DuplicationDiaryEntry, String> wednesdayColumn;
 
-	/**
-	 * Initialise Method
-	 * 
-	 * Initialise dialog prior to display
-	 * 
-	 * @param location
-	 * @param resource bundle
-	 * 
-	 */
+    /**
+ 	 * Initialise Controller
+ 	 * 
+ 	 * Called to initialise a controller after its root element has been completely processed.
+ 	 * 
+ 	 * @param url
+ 	 * @param resources
+ 	 * @since 1.0
+ 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-		diaryYearLabel.textProperty().bind(diaryYear);
 		
+		/*
+		 * call private method
+		 */
 		configureTableView();
 		
 	}
@@ -63,25 +73,31 @@ public final class DuplicationDiaryController implements Initializable {
 	/**
 	 * Configure Table View Method
 	 * 
-	 * Create the columns to be displayed in the JavaFX TableView control 
+	 * This method configures the JavaFX {@code TableView}. The {@code TableView} has three columns.
+	 * for Tuesday, Wednesday and Thursdays a week after the recording. The values for these columns
+	 * are set using a cell value factory.
 	 * 
-	 * @param none
-	 * @return none
+	 * @since 1.0
 	 */
-	@SuppressWarnings("unchecked") //suppress type safety warning
 	private void configureTableView() {
 		
 		/*
-		 * month column Jan-Dec
+		 * month column January-December
 		 */
-		TableColumn<DuplicationDiaryEntry, String> monthColumn = new TableColumn<>("Month");
 		monthColumn.setCellValueFactory(dde -> new SimpleStringProperty(dde.getValue().month().toString()));
 
 		/*
-		 * wednesday barcoding and admin column
+		 * tuesday collect wallets from St Mary's house column
 		 */
-		TableColumn<DuplicationDiaryEntry, String> wednesdayColumn = new TableColumn<>("Barcoding & Admin Wednesday");
-		wednesdayColumn.setStyle("-fx-alignment: center;");
+		tuesdayColumn.setCellValueFactory(dde -> {
+			var day = dde.getValue().collectDate().getDayOfMonth();
+			var str = Integer.toString(day) + MonthService.getEnding(day);
+			return new SimpleStringProperty(str);
+		});
+
+		/*
+		 * wednesday barcoding and admin
+		 */
 		wednesdayColumn.setCellValueFactory(dde -> {
 			var day = dde.getValue().barcodingDate().getDayOfMonth();
 			var str = Integer.toString(day) + MonthService.getEnding(day);
@@ -89,33 +105,33 @@ public final class DuplicationDiaryController implements Initializable {
 		});
 
 		/*
-		 * thursday duplication column
+		 * thursday duplication
 		 */
-		TableColumn<DuplicationDiaryEntry, String> thursdayColumn = new TableColumn<>("Duplication Thursday");
-		thursdayColumn.setStyle("-fx-alignment: center;");
 		thursdayColumn.setCellValueFactory(dde -> {
 			var day = dde.getValue().duplicationDate().getDayOfMonth();
 			var str = Integer.toString(day) + MonthService.getEnding(day);
 			return new SimpleStringProperty(str);
 		});
 
-		diaryTableView.getColumns().clear();
-		/*
-		 * add columns to table view (causes type safety warning)
-		 */
-		diaryTableView.getColumns().addAll(monthColumn, wednesdayColumn, thursdayColumn);
 	}
 
 	/**
 	 * Set Diary Items Method
 	 * 
-	 * Create observable list for display in the table view
-	 * 
-	 * @param items domain
-	 * @return none
+	 * This method sets the {@link TableView} model. It is called before the stage is
+	 * displayed from the {@link MainFormController}.
+
+	 * @param collection of diary items
+	 * @since 1.0
 	 */
 	public void setDiaryItems(List<DuplicationDiaryEntry> items) {
+		/*
+		 * raise exception if argument null 
+		 */
 		Objects.requireNonNull(items);
+		/*
+		 * set table view model
+		 */
 		var diaryItems = FXCollections.observableArrayList(items);
 		diaryTableView.setItems(diaryItems);
 	}
@@ -123,12 +139,16 @@ public final class DuplicationDiaryController implements Initializable {
 	/**
 	 * Set Diary Year Method
 	 * 
-	 * Set the diary year for display in the dialog header
+	 * This method sets the active year in the dialog header. It is called before the stage
+	 * is displayed by the {@link MainFormController}.
 	 * 
-	 * @param year
-	 * @return none
+	 * @param active year
+	 * @since 1.0
 	 */
 	public void setYear(int year) {
-		diaryYear.set(Integer.toString(year));
+		/*
+		 * set the Label text property
+		 */
+		dialogHeaderLabel.setText(dialogHeaderLabel.getText()+ " " + Integer.toString(year));
 	}
 }

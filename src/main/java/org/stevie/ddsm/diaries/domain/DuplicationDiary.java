@@ -1,12 +1,14 @@
 /**
- * Duplication Diary Class
+ * <h3>Duplication Diary Class<h3>
  * 
- * Duplication and dispatch of memory sticks is done the week following the recording. On the Tuesday 
- * the memory sticks are prepared. On Wednesday the pouches are prepared for dispatch. On the Thursday 
+ * <p>Duplication and dispatch of memory sticks is done the week following the recording. On the Tuesday 
+ * the memory sticks are collected. On Wednesday the pouches are prepared for dispatch. On Thursday 
  * the memory sticks are copied from the master and stuffed into the pouches. 
  * The pouches are then posted to the clients. The recording diary is used as a dependency and 
- * must have been generated prior to generating the duplication diary.
+ * must have been generated prior to generating the duplication diary.</p>
  * 
+ * @author Stephen
+ * @version 1.0
  */
 package org.stevie.ddsm.diaries.domain;
 
@@ -18,26 +20,58 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class DuplicationDiary implements DdsmDiary {
+/**
+ * Duplication Diary Class
+ * 
+ * This class is part of the model. It is marked with the final keyword to prevent inheritance.
+ * It uses the {@link RecordingDiary} as a basis for creating the {@link DuplicationDiary}
+ * 
+ */
+public final class DuplicationDiary extends AbstractDiary<DuplicationDiaryEntry> {
 
+	/*
+	 * logger
+	 */
 	private static Logger logger = LoggerFactory.getLogger(DuplicationDiary.class);
 
+	/*
+	 * recording diary dependency
+	 */
 	private RecordingDiary recordingDiary;
+	
+	/*
+	 * diary entries (12 per year)
+	 */
 	private List<DuplicationDiaryEntry> diaryEntries = new ArrayList<>();
-	private int diaryYear;
-
+	
+	/**
+	 * Copy Constructor
+	 * 
+	 * This constructor creates a duplication diary and generates the items in the diary.
+	 * It is marked private to make sure that other classes can only create DuplicationDiary
+	 * objects by using the builder pattern.  
+	 * 
+	 * @since 1.0
+	 */
 	private DuplicationDiary(DuplicationDiaryBuilder builder) {
+		
+		/*
+		 * recording diary dependency 
+		 */
 		this.recordingDiary = builder.recordingDiary;
-		this.diaryYear = this.recordingDiary.getDiaryYear();
-		generateDiary();
+		
 	}
 
 	/**
-	 * Generate Diary
-	 * Get all the recording diary entries. For each entry calculate the first Tuesday in the
-	 * following week. This is  
+	 * Generate Diary Method
+	 * 
+	 * This method generates all the entries for this years diary. It uses the recording
+	 * diary as a basis for generating the duplication diary entries.
+	 * 
+	 * @since 1.0
 	 */
-	private void generateDiary() {
+	@Override
+	public void generateDiary() {
 		/*
 		 * fetch recording diary entries
 		 */
@@ -50,30 +84,36 @@ public final class DuplicationDiary implements DdsmDiary {
 	}
 	
 	/**
-	 * Method Reference
+	 * Build An Entry Method
 	 * 
-	 * Used as part of JDK 8 stream.
-	 *  
+	 * This method takes a recording diary entry and uses it to create a duplication diary
+	 * entry. It is called using a method reference
+	 * 
+	 * @param recording diary entry
+	 * @returns new duplication diary entry 
 	 */
 	private DuplicationDiaryEntry buildDuplicationEntry(RecordingDiaryEntry re) {
 		Objects.requireNonNull(re);
+		LocalDate nextTuesday = re.recordingDate().plusDays(8L);
 		LocalDate nextWednesday = re.recordingDate().plusDays(9L);
 		LocalDate nextThursday = re.recordingDate().plusDays(10L);
-		return new DuplicationDiaryEntry(re.recordingDate().getMonth(), nextWednesday, nextThursday);
+		return new DuplicationDiaryEntry(re.recordingDate().getMonth(), nextTuesday, nextWednesday, nextThursday);
 	}
 
 	/**
-	 * Print Diary
+	 * Print Diary To Console Method
 	 * 
 	 * Print the diary entries to the console.
 	 * 
+	 * @since 1.0
 	 */
 	@Override
 	public void printDiaryToConsole() {
-		logger.info("DUPLICATION DATES {}", recordingDiary.getDiaryYear());
+		logger.info("DUPLICATION DATES {}", recordingDiary.getYear());
 		for (DuplicationDiaryEntry entry : diaryEntries) {
 			var sb = new StringBuilder();
 			sb.append(entry.month()+ " ");
+			sb.append("Tuesday=" + entry.collectDate().getDayOfMonth() + " ");
 			sb.append("Wednesday=" + entry.barcodingDate().getDayOfMonth() + " ");
 			sb.append("Thursday=" + entry.duplicationDate().getDayOfMonth());
 			if (!sb.toString().isEmpty()) {
@@ -84,26 +124,15 @@ public final class DuplicationDiary implements DdsmDiary {
 	}
 
 	/**
-	 * Get Diary Year
-	 * 
-	 * Retrieve the year of this diary
-	 * 
-	 * @return year
-	 */
-	@Override
-	public int getDiaryYear() {
-		return this.diaryYear;
-	}
-
-	/**
 	 * Get Entries
 	 * 
-	 * Returns all the entries in the diary. These are copied to an observable list for presentation in
-	 * the UI. The method returns a defensive copy to preserve the invariants of the class.
+	 * Returns all the entries in the diary. The method returns a defensive copy to preserve the 
+	 * invariants of the class.
 	 * 
 	 * @return list of entries 12 in total 
 	 * 
 	 */
+	@Override
 	public List<DuplicationDiaryEntry> getEntries() {
 		return new ArrayList<>(diaryEntries);
 	}
@@ -113,7 +142,7 @@ public final class DuplicationDiary implements DdsmDiary {
 	 * 
 	 * This class is nested class which is used as part of the builder pattern
 	 * 
-	 * @author steph
+	 * @author Stephen
 	 *
 	 */
 	public static class DuplicationDiaryBuilder {

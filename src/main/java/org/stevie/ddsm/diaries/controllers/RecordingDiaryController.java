@@ -1,11 +1,12 @@
-
 /**
- * <h3>Recording Diary Dialog</h3>
+ * <h3>Recording Rota Dialog</h3>
  * 
- * <p>This class is the JavaFX controller for the recording diary dialog (recording.fxml). This
- * dialog presents the recording diary to the user</p>
+ * <p>This class is the MVC controller for the preparation and duplication dialog.
+ * The dialog presents the recording rota to the end user</p>
  * 
  * @author Stephen
+ * @version 1.0
+ * 
  */
 package org.stevie.ddsm.diaries.controllers;
 
@@ -27,59 +28,68 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+/**
+ * Recording Rota Dialog Class
+ * 
+ * JavaFX controller backing the view in recording.fxml.
+ * 
+ */
 @Component
 public final class RecordingDiaryController implements Initializable {
-
-	/*
-	 * year of diary
-	 */
-	private SimpleStringProperty diaryYear = new SimpleStringProperty();
-	
 	/*
 	 * JavaFX Controls
 	 */
 	@FXML
-	private Label diaryYearLabel;
+	private Label dialogHeaderLabel;
 	@FXML
 	private TableView<RecordingDiaryEntry> diaryTableView;
-
-	/**
-	 * Initialise Method
-	 * 
-	 * Initialise dialog prior to display
-	 * 
-	 * @param location
-	 * @param resource bundle
-	 * 
-	 */
+    @FXML
+    private TableColumn<RecordingDiaryEntry, String> dateColumn;
+    @FXML
+    private TableColumn<RecordingDiaryEntry, Integer> editionColumn;
+    @FXML
+    private TableColumn<RecordingDiaryEntry, String> compilerColumn;
+    @FXML
+    private TableColumn<RecordingDiaryEntry, String> monthColumn;
+    
+    /**
+ 	 * Initialise Controller
+ 	 * 
+ 	 * Called to initialise a controller after its root element has been completely processed.
+ 	 * 
+ 	 * @param url
+ 	 * @param resources
+ 	 * @since 1.0
+ 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		diaryYearLabel.textProperty().bind(diaryYear);
 
+		/*
+		 * call private method
+		 */
 		configureTableView();
 	}
 
 	/**
 	 * Configure Table View Method
 	 * 
-	 * Create the columns to be displayed in the JavaFX TableView control 
+	 * This method configures the JavaFX {@code TableView}. The {@code TableView} has four columns.
+	 * The first column displays the month. The second column is the date of recording which
+	 * is always a Monday except bank holidays. The third column is the magazine edition. The
+	 * fourth column displays the compiler which alternates between compiler 1 and compiler 2.
 	 * 
-	 * @param none
-	 * @return none
+	 * @since 1.0
 	 */
-	@SuppressWarnings("unchecked") //suppress type safety warning
 	private void configureTableView() {
 
 		/*
 		 * month column Jan-Dec
 		 */
-		TableColumn<RecordingDiaryEntry, String> monthColumn = new TableColumn<>("Month");
 		monthColumn.setCellValueFactory(rde -> new SimpleStringProperty(rde.getValue().month().toString()));
 	
 		/*
 		 * date column (date + day of week)
 		 */
-		TableColumn<RecordingDiaryEntry, String> dateColumn = new TableColumn<>("First Monday in Month");
 		dateColumn.setCellValueFactory(rde -> {
 			var date = rde.getValue().recordingDate();
 			var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -91,30 +101,23 @@ public final class RecordingDiaryController implements Initializable {
 		/*
 		 * edition column
 		 */
-		TableColumn<RecordingDiaryEntry, Integer> editionColumn = new TableColumn<>("Edition");
 		editionColumn.setCellValueFactory(rde -> new SimpleIntegerProperty(rde.getValue().edition()).asObject());
 
 		/*
 		 * compiler column
 		 */
-		TableColumn<RecordingDiaryEntry, String> compilerColumn = new TableColumn<>("Compiler");
 		compilerColumn.setCellValueFactory(rde -> new SimpleStringProperty(rde.getValue().compiler()));
 
-		diaryTableView.getColumns().clear();
-		
-		/*
-		 * add columns to table view (causes type safety warning)
-		 */
-		diaryTableView.getColumns().addAll(monthColumn, dateColumn, editionColumn, compilerColumn);
 	}
 
 	/**
 	 * Set Diary Items Method
 	 * 
-	 * Create observable list for display in the table view
-	 * 
-	 * @param items domain
-	 * @return none
+	 * This method sets the {@link TableView} model. It is called before the stage is
+	 * displayed from the {@link MainFormController}.
+
+	 * @param collection of diary items
+	 * @since 1.0
 	 */
 	public void setDiaryItems(List<RecordingDiaryEntry> items) {
 		Objects.requireNonNull(items);
@@ -125,13 +128,17 @@ public final class RecordingDiaryController implements Initializable {
 	/**
 	 * Set Diary Year Method
 	 * 
-	 * Set the diary year for display in the dialog header
+	 * This method sets the active year in the dialog header. It is called before the stage
+	 * is displayed by the {@link MainFormController}.
 	 * 
-	 * @param year
-	 * @return none
+	 * @param active year
+	 * @since 1.0
 	 */
 	public void setYear(int year) {
-		diaryYear.set(Integer.toString(year));
+		/*
+		 * set the Label text property
+		 */
+		dialogHeaderLabel.setText(dialogHeaderLabel.getText()+ " " + Integer.toString(year));
 	}
 
 }

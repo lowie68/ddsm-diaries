@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="55.0" prefWidth="606.0">
                <children>
-                  <Label text="Diocesan Digest Sound Magazine">
+                  <Label styleClass="header-title" text="Diocesan Digest Sound Magazine">
                      <font>
                         <Font name="Arial" size="24.0" />
                      </font>
@@ -35,7 +35,7 @@
             </HBox>
             <HBox prefHeight="16.0" prefWidth="596.0">
                <children>
-                  <Label text="Rota Creator">
+                  <Label styleClass="header-title" text="Rota Creator">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Diary Year">
+                        <Label text="Diary Year" textFill="#60bada">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

@@ -1,19 +1,28 @@
 /**
- * Bank Holiday Class
+ * <h3>Bank Holiday Class</h3>
  * 
- * This class is the object which is mapped to the JSON retrieved from the bank holiday REST API
+ * <p>The bank holiday API sends the bank holidays for a given year over the Internet in JSON
+ * format. The Jackson library converts the json string into an object. The class is annotated
+ * with Jackson annotations which the library uses to deserialise the json string to a POJO. The class
+ * is immutable once it is constructed.</p>
  * 
  */
 package org.stevie.ddsm.diaries.service.bank;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = BankHoliday.Builder.class)
+/**
+ * Bank Holiday Class
+ * 
+ * Model object. (see the nager date API)
+ */
+@JsonDeserialize(builder = BankHoliday.Builder.class) //use the builder pattern to create an object of the bank holiday class
 public final class BankHoliday {
 	
 	private final LocalDate date;
@@ -25,6 +34,20 @@ public final class BankHoliday {
 	private final String[] counties;
 	private final String type;
 	
+	/**
+	 * Copy Constructor
+	 * 
+	 * Private constructor restricts class users to using the builder pattern
+	 * 
+	 * @param date of bank holiday
+	 * @param local name description of the bank holiday
+	 * @param name
+	 * @param countryCode
+	 * @param fixed
+	 * @param global
+	 * @param counties
+	 * @param type
+	 */
 	private BankHoliday(LocalDate date, String localName, String name, String countryCode, boolean fixed, boolean global,
 			String[] counties, String type) {
 		super();
@@ -38,6 +61,9 @@ public final class BankHoliday {
 		this.type = type;
 	}
 	
+	/**
+	 * property getter methods
+	 */
 	public LocalDate getDate() {
 		return date;
 	}
@@ -70,6 +96,47 @@ public final class BankHoliday {
 		return type;
 	}
 
+	/**
+	 * Hash Code Method
+	 * 
+	 * Used when storing objects in a HashMap
+	 * 
+	 * @since 1.0
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(date);
+	}
+
+	/**
+	 * Equals Method
+	 * 
+	 * Two Bank Holiday objects are equal if the date is the same.
+	 * 
+	 * @param other object to compare with
+	 * @return true if objects are equal
+	 * @since 1.0
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BankHoliday other = (BankHoliday) obj;
+		return Objects.equals(date, other.date);
+	}
+
+	/**
+	 * To String Method
+	 * 
+	 * Returns a string representation of the object which is used when printing
+	 * 
+	 * @return string representation of the object
+	 * @since 1.0
+	 */
 	@Override
 	public String toString() {
 		return String.format(
@@ -77,8 +144,17 @@ public final class BankHoliday {
 				date, localName, name, countryCode, fixed, global, Arrays.toString(counties), type);
 	}
 
+	/**
+	 * Builder Class
+	 * 
+	 * This class is part of the builder pattern which is used to create new objects rather
+	 * than using a constructor or static factory method.
+	 * 
+	 * @author Stephen
+	 * @version 1.0
+	 */
 	@JsonPOJOBuilder
-	static class Builder {
+	public static class Builder {
 		private LocalDate date;
 		private String localName;
 		private String name;

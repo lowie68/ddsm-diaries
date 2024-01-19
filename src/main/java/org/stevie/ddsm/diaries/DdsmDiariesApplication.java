@@ -1,6 +1,6 @@
 /**
  * 
- * DDSM Dairy Application
+ * DDSM Rota Application Main Entry Point
  * 
  * DDSM stands for Diocesan Digest Sound Magazine which is a sound magazine published once a month for blind people in the 
  * diocese of Lichfield. The magazine is based in Lichfield Cathedral. This project is a small utility tool used for 
@@ -18,6 +18,9 @@ import javafx.application.Application;
 @ComponentScan(basePackages = {"org.stevie.ddsm.diaries", "org.stevie.ddsm.diaries.controllers", "org.stevie.ddsm.diaries.service.internet","org.stevie.ddsm.diaries.service.month", "org.stevie.ddsm.diaries.service.bank"})
 public class DdsmDiariesApplication {
 	public static void main(String[] args) {
+		/*
+		 * launch JavaFX application
+		 */
 		Application.launch(DiaryApplicationFX.class, args);
 	}
 
