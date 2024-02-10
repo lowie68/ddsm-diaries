@@ -1,0 +1,58 @@
+/**
+ * <h3>Save File Chooser Class</h3>
+ * <p>This class is an abstraction around the standard O/S save file dialog. It corrects
+ * the return value from the save dialog to an optional. If there is no selected file 
+ * it returns an empty optional. It also converts the File return value to the modern NIO Path.</p>
+ * 
+ * @author Stephen
+ * @version 1.0
+ */
+package org.stevie.ddsm.diaries.file;
+
+import java.nio.file.Path;
+import java.util.Optional;
+
+import javafx.stage.Stage;
+
+/**
+ * Open File Chooser Class
+ * 
+ * This class wraps the {@link FileChooser} class. It corrects deficiencies in the 
+ * standard API.
+ */
+public final class SaveFileChooser extends AbstractFileChooser {
+
+	/**
+	 * Copy Constructor
+	 * Calls the parent constructor and set properties to configure the {@link FileChooser}
+	 * 
+	 * @param parent window
+	 * @param default file name to display in the dialog
+	 * @since 1.0
+	 */
+	public SaveFileChooser(Stage parentWindow, String defaultFileName) {
+		super(parentWindow);
+		chooser.setTitle("Export Bank Holidays");
+		chooser.setInitialFileName(defaultFileName);
+	}
+	
+	/**
+	 * Show Chooser Method
+	 * 
+	 * Shows the correct chooser and returns the path of the selected file. If the user
+	 * does'nt select a file or cancels the dialog an empty optional is returned.
+	 * 
+	 * @return selected path empty if none selected
+	 * @since 1.0
+	 */
+	@Override
+	public Optional<Path> showChooser() {
+		var file = chooser.showSaveDialog(getParentWindow()); 
+		if (file == null) {
+			return Optional.empty();
+		}
+		return Optional.of(file.toPath());
+		
+	}
+
+}

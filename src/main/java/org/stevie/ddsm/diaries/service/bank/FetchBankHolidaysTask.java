@@ -119,7 +119,7 @@ public final class FetchBankHolidaysTask extends Task<List<BankHoliday>> {
 			        })
 			    .collectSortedList(Comparator.comparing(BankHoliday::getDate))
 			    .doOnSuccess(list -> BankHolidayCache.putBankHolidaysInCache(list, this.year))
-			    .doOnError(ex -> logger.error("Error retrieving bank holidays from REST API exception was {}", ex.getMessage()))
+			    .doOnError(e -> logger.error("Error retrieving bank holidays from REST API exception was {}", e))
 			    .block();
 	}
 

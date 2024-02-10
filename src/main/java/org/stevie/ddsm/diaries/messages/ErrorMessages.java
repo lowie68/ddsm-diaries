@@ -25,5 +25,6 @@ public class ErrorMessages {
 	public static final String FORM_LOAD_ERROR = "Error Loading Form";
 	public static final String ILLEGAL_PROGRAM_STATE = "Illegal Program State";
 	public static final String DUPLICATE_BANK_HOLIDAY = "Duplicate Bank Holiday";
+	public static final String IO_ERROR = "Input/Output Error";
 
 }

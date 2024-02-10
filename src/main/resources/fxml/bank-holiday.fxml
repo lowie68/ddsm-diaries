@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stevie.ddsm.diaries.controllers.BankHolidayDialogController">
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="962.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stevie.ddsm.diaries.controllers.BankHolidayDialogController">
    <content>
       <AnchorPane prefHeight="657.0" prefWidth="900.0">
          <children>
@@ -56,6 +56,7 @@
                         <Button fx:id="manualInputButton" mnemonicParsing="false" onAction="#handleManualInputButtonAction" text="Manual Input Bank Holidays " />
                         <Button fx:id="importFromFileButton" mnemonicParsing="false" onAction="#handleImportFromFileButtonAction" text="Import Bank Holidays From File" />
                         <Button fx:id="exportToFileButton" mnemonicParsing="false" onAction="#handleExportToFileButtonAction" prefWidth="168.0" text="Export Bank Holidays To File" />
+                        <Button fx:id="saveToCacheButton" mnemonicParsing="false" onAction="#handleSaveToCacheButtonAction" text="Save To Cache" />
                      </children>
                   </HBox>
                   <TableView fx:id="bankHolidayTableView" prefHeight="427.0" prefWidth="880.0">

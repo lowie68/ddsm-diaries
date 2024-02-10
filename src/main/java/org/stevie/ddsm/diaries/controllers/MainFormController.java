@@ -142,7 +142,7 @@ public class MainFormController  implements Initializable {
 	/**
 	 * Configure Year Choice Box Method
 	 * 
-	 * The year choice box allows the end user to specify the year for which the rotas
+	 * The year choice box allows the end user to specify the year for which the rota's
 	 * apply to. This is known as the active year. The user can select either 5 years previous
 	 * to the current date or 5 years in advance of the current date.
 	 * 
@@ -246,7 +246,7 @@ public class MainFormController  implements Initializable {
 			e -> {
 				internetConnectionLabel.setText(InternetStatusService.INTERNET_STATUS_CHECK_FAILED);
 				internetConnectionLabel.setStyle("-fx-text-fill: red;");
-				logger.error("Internet status background thread failed with exception {}", service.getException().getMessage());
+				logger.error("Internet status background thread failed with exception {}", service.getException());
 				var alert = new Alert(AlertType.ERROR);
 				alert.setTitle(ErrorMessages.FATAL_ERROR);
 				alert.setHeaderText(ErrorMessages.ILLEGAL_PROGRAM_STATE);
@@ -369,7 +369,7 @@ public class MainFormController  implements Initializable {
 			 * if there is an exception during fxml parsing, log an error message
 			 * display an alert dialog to the user and exit program.
 			 */
-			logger.error("I/O exception occurred while loading recording dialog - {}", e.getMessage());
+			logger.error("I/O exception occurred while loading recording dialog - {}", e);
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(ErrorMessages.FATAL_ERROR);
 			alert.setHeaderText(ErrorMessages.FORM_LOAD_ERROR);
@@ -490,7 +490,7 @@ public class MainFormController  implements Initializable {
 			 * if there is an exception during fxml parsing, log an error message
 			 * display an alert dialog to the user and exit program.
 			 */
-			logger.error("I/O exception occurred while loading duplication dialog - {}", e.getMessage());
+			logger.error("I/O exception occurred while loading duplication dialog - {}", e);
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(ErrorMessages.FATAL_ERROR);
 			alert.setHeaderText(ErrorMessages.FORM_LOAD_ERROR);
@@ -561,7 +561,7 @@ public class MainFormController  implements Initializable {
 			 * if there is an exception during fxml parsing, log an error message
 			 * display an alert dialog to the user and exit program.
 			 */
-			logger.error("I/O exception occurred while loading bank holiday dialog " + e.getMessage());
+			logger.error("I/O exception occurred while loading bank holiday dialog {}", e);
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(ErrorMessages.FATAL_ERROR);
 			alert.setHeaderText(ErrorMessages.FORM_LOAD_ERROR);
@@ -609,7 +609,7 @@ public class MainFormController  implements Initializable {
 				alert.showAndWait();
 				return false;
 			}
-		} catch (NumberFormatException ex) {
+		} catch (NumberFormatException e) {
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(ErrorMessages.MAIN_FORM_ERROR);
 			alert.setHeaderText(ErrorMessages.MAIN_FORM_VALIDATION_ERROR);

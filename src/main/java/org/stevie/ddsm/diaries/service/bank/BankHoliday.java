@@ -143,7 +143,7 @@ public final class BankHoliday {
 				"BankHoliday [date=%s, localName=%s, name=%s, countryCode=%s, fixed=%s, global=%s, counties=%s, type=%s]",
 				date, localName, name, countryCode, fixed, global, Arrays.toString(counties), type);
 	}
-
+	
 	/**
 	 * Builder Class
 	 * 

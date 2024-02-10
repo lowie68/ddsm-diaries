@@ -36,7 +36,7 @@ public final class BankHolidayCache {
 	/*
 	 * bank holiday map cache where bank holidays are kept in memory
 	 * The key of the cache is the year and the value is a list of bank
-	 * holidays for a given year.
+	 * holidays for the given year.
 	 */
 	private static Map<Integer, List<BankHoliday>> holidayCache = new HashMap<>();
 

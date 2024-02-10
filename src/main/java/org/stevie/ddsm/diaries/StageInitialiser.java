@@ -73,7 +73,7 @@ public class StageInitialiser implements ApplicationListener<StageReadyEvent> {
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
-			logger.error("I/O exception occurred while loading main stage - {}", e.getMessage());
+			logger.error("I/O exception occurred while loading main stage - {}", e);
 			var alert = new Alert(AlertType.ERROR);
 			alert.setTitle(ErrorMessages.FATAL_ERROR);
 			alert.setHeaderText(ErrorMessages.FORM_LOAD_ERROR);

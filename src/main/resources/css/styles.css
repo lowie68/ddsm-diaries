@@ -89,4 +89,12 @@
 	-fx-text-fill: #60bada;
 }
 
+#saveToCacheButton {
+	-fx-background-color: violet;
+	-fx-border-width: 1;
+	-fx-border-color: violet;
+	-fx-text-fill: white;
+}
+	
+
 
